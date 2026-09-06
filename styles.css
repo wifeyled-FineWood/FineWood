@@ -1127,6 +1127,7 @@ input:checked + .switch-slider:before { transform: translateX(18px); }
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, transparent 100%);
 }
 
+.char-avatar-frame,
 .char-avatar-fallback {
   width: 95px;
   height: 95px;
@@ -1137,6 +1138,20 @@ input:checked + .switch-slider:before { transform: translateX(18px); }
   justify-content: center;
   position: relative;
   background: #181c26;
+  overflow: visible;
+}
+
+.char-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.char-card:hover .char-avatar-img {
+  transform: scale(1.04);
+  transition: transform var(--transition-base);
 }
 
 .academy-border {
