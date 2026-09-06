@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Finewood Academy &amp; Multiverse — Official Infographic Atlas</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Inter:wght@400;500;600&display=swap');
+
+    :root {
+      --gold: #d4af37;
+      --gold-light: #f5df88;
+      --gold-dark: #8f7220;
+      --wine: #48121f;
+      --wine-dark: #2a0911;
+      --slate-bg: #0c0e14;
+      --card-bg: #141822;
+      --border-gold: rgba(212, 175, 55, 0.35);
+    }
+
+    body {
+      background-color: var(--slate-bg);
+      color: #ede7dc;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 24px;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(72, 18, 31, 0.3) 0%, transparent 60%),
+        radial-gradient(circle at 10% 30%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+        radial-gradient(circle at 90% 70%, rgba(40, 20, 60, 0.2) 0%, transparent 50%);
+    }
+
+    .font-serif-title {
+      font-family: 'Cinzel', Georgia, serif;
+    }
+
+    .font-serif-body {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    .gold-foil {
+      background: linear-gradient(135deg, #d4af37 0%, #f7e6a1 50%, #aa8522 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .gold-border {
+      border: 1px solid var(--border-gold);
+    }
+
+    .gold-badge {
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      background: rgba(212, 175, 55, 0.1);
+      color: var(--gold);
+    }
+
+    .card {
+      background: rgba(20, 24, 34, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      transition: all 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    .screenshot-mode .no-export {
+      display: none !important;
+    }
+
+    .screenshot-mode {
+      padding: 40px !important;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body id="infographicBody">
+
+  <!-- Header Controls (Hidden in Screenshot Mode) -->
+  <div class="max-w-6xl mx-auto flex justify-between items-center mb-6 no-export">
+    <div class="flex items-center gap-3">
+      <span class="text-xs tracking-widest uppercase text-amber-400/80 font-serif-title font-bold px-3 py-1 rounded bg-amber-950/40 border border-amber-500/30">Patreon Visual Companion</span>
+      <span class="text-xs text-stone-400">Perfect for high-res screenshots or direct member downloads</span>
+    </div>
+    <div class="flex gap-2">
+      <button onclick="toggleExportMode()" id="btnScreenshot" class="px-4 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-400/40 rounded-md text-xs font-semibold tracking-wider uppercase transition cursor-pointer">
+        📸 Toggle Clean Screenshot Mode
+      </button>
+      <button onclick="window.print()" class="px-3 py-1.5 bg-stone-800 hover:bg-stone-700 text-stone-300 border border-stone-600/40 rounded-md text-xs font-semibold tracking-wider uppercase transition cursor-pointer">
+        🖨️ Print / Save PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Infographic Canvas -->
+  <div class="max-w-6xl mx-auto border border-amber-500/30 rounded-2xl bg-gradient-to-b from-[#11141c] via-[#0d0f15] to-[#0a0c10] p-8 sm:p-12 shadow-2xl relative overflow-hidden">
+    
+    <!-- Top Decorative Crest -->
+    <div class="text-center mb-10 relative z-10">
+      <div class="text-3xl text-amber-400 mb-2">⚜️</div>
+      <div class="text-xs font-serif-title tracking-[0.3em] uppercase text-amber-300/80 mb-1">
+        Official Canon &bull; Institutional Register
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-serif-title font-black tracking-wider uppercase mb-3 gold-foil">
+        The Finewood Multiverse
+      </h1>
+      <p class="font-serif-body italic text-xl sm:text-2xl text-stone-300 max-w-2xl mx-auto">
+        "A directory of 57 personages across the Academy, sister finishing schools, and the sanctuary of domestic authority."
+      </p>
+
+      <!-- Key Stat Ribbon -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl mx-auto mt-8 p-3 rounded-xl bg-black/40 border border-amber-500/20">
+        <div class="text-center">
+          <div class="font-serif-title text-2xl font-bold text-amber-400">57</div>
+          <div class="text-[10px] tracking-wider uppercase text-stone-400 font-semibold">Total Characters</div>
+        </div>
+        <div class="text-center border-l border-white/10">
+          <div class="font-serif-title text-2xl font-bold text-amber-400">3 Tiers</div>
+          <div class="text-[10px] tracking-wider uppercase text-stone-400 font-semibold">Escalating Counseling</div>
+        </div>
+        <div class="text-center border-l border-white/10">
+          <div class="font-serif-title text-2xl font-bold text-amber-400">18</div>
+          <div class="text-[10px] tracking-wider uppercase text-stone-400 font-semibold">Cubs &amp; Wards</div>
+        </div>
+        <div class="text-center border-l border-white/10">
+          <div class="font-serif-title text-2xl font-bold text-amber-400">9 Worlds</div>
+          <div class="text-[10px] tracking-wider uppercase text-stone-400 font-semibold">Interlinked Arcs</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Filter Buttons (Hidden in Screenshot Mode) -->
+    <div class="flex flex-wrap justify-center gap-2 mb-10 no-export">
+      <button onclick="filterSection('all')" class="filter-tag px-3 py-1 rounded-full text-xs font-serif-title tracking-wider bg-amber-500 text-black font-bold cursor-pointer">Show All 57</button>
+      <button onclick="filterSection('leadership')" class="filter-tag px-3 py-1 rounded-full text-xs font-serif-title tracking-wider bg-stone-800 hover:bg-stone-700 text-stone-300 cursor-pointer">Academy Leadership</button>
+      <button onclick="filterSection('counseling')" class="filter-tag px-3 py-1 rounded-full text-xs font-serif-title tracking-wider bg-stone-800 hover:bg-stone-700 text-stone-300 cursor-pointer">3-Tier Counseling</button>
+      <button onclick="filterSection('faculty')" class="filter-tag px-3 py-1 rounded-full text-xs font-serif-title tracking-wider bg-stone-800 hover:bg-stone-700 text-stone-300 cursor-pointer">Faculty &amp; Specialists</button>
+      <button onclick="filterSection('cubs')" class="filter-tag px-3 py-1 rounded-full text-xs font-serif-title tracking-wider bg-stone-800 hover:bg-stone-700 text-stone-300 cursor-pointer">Cubs &amp; Maid Wards</button>
+      <button onclick="filterSection('outer')" class="filter-tag px-3 py-1 rounded-full text-xs font-serif-title tracking-wider bg-stone-800 hover:bg-stone-700 text-stone-300 cursor-pointer">Outer Universes &amp; FLR</button>
+    </div>
+
+    <div class="space-y-12" id="rosterContainer">
+
+      <!-- SECTION 1: SUPREME LEADERSHIP & DISCIPLINE -->
+      <section class="roster-section" data-group="leadership">
+        <div class="flex items-center gap-3 mb-4 pb-2 border-b border-amber-500/20">
+          <span class="text-xl">🏛️</span>
+          <h2 class="font-serif-title text-xl tracking-wider text-amber-300 uppercase">Finewood Academy High Governance</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          <div class="card p-4 border-amber-500/50 bg-gradient-to-br from-amber-950/20 to-stone-900/40">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-serif-title font-bold text-lg text-amber-200">Ophelia</h3>
+              <span class="gold-badge text-[10px] px-2 py-0.5 rounded uppercase font-semibold">Ultimate Headmistress</span>
+            </div>
+            <p class="text-xs text-stone-400 italic mb-2">Formal black Victorian dress, blue spectacles, silver hair updo.</p>
+            <p class="text-xs text-stone-300">The supreme sovereign of Finewood. Absolute arbiter of school policies and final disciplinary rulings.</p>
+          </div>
+
+          <div class="card p-4">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-serif-title font-bold text-lg text-stone-100">Andrea</h3>
+              <span class="text-[10px] bg-blue-900/40 text-blue-300 border border-blue-500/30 px-2 py-0.5 rounded uppercase font-semibold">Visiting / Sub Headmistress</span>
+            </div>
+            <p class="text-xs text-stone-400 italic mb-2">Blue Victorian gown with gold accents, red necklace, dark hair.</p>
+            <p class="text-xs text-stone-300">Visiting dignitary and deputy administrator presiding during executive reviews.</p>
+          </div>
+
+          <div class="card p-4 border-purple-500/30">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-serif-title font-bold text-lg text-purple-200">Lady D</h3>
+              <span class="text-[10px] bg-purple-900/40 text-purple-300 border border-purple-500/30 px-2 py-0.5 rounded uppercase font-semibold">Head Archivist</span>
+            </div>
+            <p class="text-xs text-stone-400 italic mb-2">Tall, white corseted gown, black postilion hat with silk flowers.</p>
+            <p class="text-xs text-stone-300">Custodian of ancient Academy ledgers. Co-founder of the London reform estate with step-sister Lady M.</p>
+          </div>
+
+          <div class="card p-4 border-red-900/40 bg-red-950/10">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-serif-title font-bold text-lg text-red-200">Misha &amp; Elaine</h3>
+              <span class="text-[10px] bg-red-900/40 text-red-300 border border-red-500/30 px-2 py-0.5 rounded uppercase font-semibold">Discipline Office</span>
+            </div>
+            <p class="text-xs text-stone-400 italic mb-2">Misha (green gown, pink glasses); Elaine (burgundy gown, wields a cane).</p>
+            <p class="text-xs text-stone-300">Misha records the infractions; Elaine enforces the consequence with formal cane corrections.</p>
+          </div>
+
+          <div class="card p-4">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-serif-title font-bold text-lg text-stone-100">Kathy</h3>
+              <span class="text-[10px] bg-cyan-950/40 text-cyan-300 border border-cyan-500/30 px-2 py-0.5 rounded uppercase font-semibold">Dorm Mother / Matron</span>
+            </div>
+            <p class="text-xs text-stone-400 italic mb-2">Blue Victorian dress, blonde hair.</p>
+            <p class="text-xs text-stone-300">Governs residential quarters, dorm inspections, quiet study hours, and curfews.</p>
+          </div>
+
+          <div class="card p-4">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="font-serif-title font-bold text-lg text-stone-100">Security Guard</h3>
+              <span class="text-[10px] bg-emerald-950/40 text-emerald-300 border border-emerald-500/30 px-2 py-0.5 rounded uppercase font-semibold">Campus Enforcement</span>
+            </div>
+            <p class="text-xs text-stone-400 italic mb-2">Dark green security guard dress and blouse, tall, orange &amp; blue hair.</p>
+            <p class="text-xs text-stone-300">Guarantees perimeter control and physical escort to the disciplinary offices.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECTION 2: THE 3-TIER COUNSELING DEPARTMENT -->
+      <section class="roster-section" data-group="counseling">
+        <div class="flex items-center gap-3 mb-4 pb-2 border-b border-amber-500/20">
+          <span class="text-xl">⚖️</span>
+          <h2 class="font-serif-title text-xl tracking-wider text-amber-300 uppercase">The 3-Tier Escalating Counseling Department</h2>
+        </div>
+        <p class="text-xs text-stone-400 mb-4">When a student exhibits rebellion or decision-making defiance, they are referred through escalating severity:</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <!-- Tier 1 -->
+          <div class="card p-5 border-l-4 border-l-amber-400">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-[10px] font-serif-title tracking-wider text-amber-400 uppercase font-bold">Severity Level I</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-amber-950/50 text-amber-200 border border-amber-500/30">Remedial</span>
+            </div>
+            <h3 class="font-serif-title text-lg font-bold text-white mb-1">Astra</h3>
+            <p class="text-xs text-stone-400 italic mb-3">Red Victorian dress, brunette hair.</p>
+            <p class="text-xs text-stone-300">Initial psychological intake. Explores where the student lost their willingness to obey and establishes baseline routines.</p>
+          </div>
+
+          <!-- Tier 2 -->
+          <div class="card p-5 border-l-4 border-l-orange-500">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-[10px] font-serif-title tracking-wider text-orange-400 uppercase font-bold">Severity Level II</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-orange-950/50 text-orange-200 border border-orange-500/30">Intensive</span>
+            </div>
+            <h3 class="font-serif-title text-lg font-bold text-white mb-1">Melanie</h3>
+            <p class="text-xs text-stone-400 italic mb-3">Brown Victorian dress, chignon, brown glasses.</p>
+            <p class="text-xs text-stone-300">Deep behavioral boundary enforcement. Reluctance is met with strict behavioral exercises and demerit notices.</p>
+          </div>
+
+          <!-- Tier 3 -->
+          <div class="card p-5 border-l-4 border-l-rose-700 bg-rose-950/10">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-[10px] font-serif-title tracking-wider text-rose-400 uppercase font-bold">Severity Level III</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-rose-950/50 text-rose-200 border border-rose-500/30">Final / Austere</span>
+            </div>
+            <h3 class="font-serif-title text-lg font-bold text-white mb-1">Celeste</h3>
+            <p class="text-xs text-stone-400 italic mb-3">Austere black Victorian dress, raven hair.</p>
+            <p class="text-xs text-stone-300">The final counseling stop before severe formal physical punishment. Cold, quiet, and completely uncompromising.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: TEACHING FACULTY & SPECIALISTS -->
+      <section class="roster-section" data-group="faculty">
+        <div class="flex items-center gap-3 mb-4 pb-2 border-b border-amber-500/20">
+          <span class="text-xl">🎼</span>
+          <h2 class="font-serif-title text-xl tracking-wider text-amber-300 uppercase">Teaching Faculty &amp; Specialist Instructors</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <div class="card p-4">
+            <div class="text-[10px] text-amber-400 uppercase font-semibold font-serif-title">Music &amp; Metronome</div>
+            <h4 class="font-serif-title font-bold text-stone-100 mt-1">Hawthorne</h4>
+            <p class="text-[11px] text-stone-400 italic">Black gown, purple piping, round glasses.</p>
+            <p class="text-xs text-stone-300 mt-2">Music Director; enforces posture and impeccable timing with military strictness.</p>
+          </div>
+
+          <div class="card p-4">
+            <div class="text-[10px] text-amber-400 uppercase font-semibold font-serif-title">English Department</div>
+            <h4 class="font-serif-title font-bold text-stone-100 mt-1">Ms. Leery</h4>
+            <p class="text-[11px] text-stone-400 italic">Fitted white shirt, pencil skirt.</p>
+            <p class="text-xs text-stone-300 mt-2">Grammar and classical composition; lines given for sloppy syntax.</p>
+          </div>
+
+          <div class="card p-4">
+            <div class="text-[10px] text-amber-400 uppercase font-semibold font-serif-title">History &amp; Hierarchy</div>
+            <h4 class="font-serif-title font-bold text-stone-100 mt-1">Wu</h4>
+            <p class="text-[11px] text-stone-400 italic">Grey blouse, long skirt, traditional hair.</p>
+            <p class="text-xs text-stone-300 mt-2">History Teacher; lectures on the timeless stability of matriarchal order.</p>
+          </div>
+
+          <div class="card p-4">
+            <div class="text-[10px] text-amber-400 uppercase font-semibold font-serif-title">Etiquette &amp; Deportment</div>
+            <h4 class="font-serif-title font-bold text-stone-100 mt-1">Ashley</h4>
+            <p class="text-[11px] text-stone-400 italic">Ms. Pennington, cream dress, tight ponytail.</p>
+            <p class="text-xs text-stone-300 mt-2">Deportment instructor; book-balancing and curtsey corrections.</p>
+          </div>
+
+          <div class="card p-4 border-amber-500/30">
+            <div class="text-[10px] text-amber-400 uppercase font-semibold font-serif-title">Sissymaid Conditioning</div>
+            <h4 class="font-serif-title font-bold text-amber-200 mt-1">Eleanor</h4>
+            <p class="text-[11px] text-stone-400 italic">Tight black blouse, pencil skirt, muscled arms.</p>
+            <p class="text-xs text-stone-300 mt-2">Sissymaid Trainer at Finewood; Roaming Disciplinarian in Nordlandia.</p>
+          </div>
+
+          <div class="card p-4">
+            <div class="text-[10px] text-amber-400 uppercase font-semibold font-serif-title">Physical Culture</div>
+            <h4 class="font-serif-title font-bold text-stone-100 mt-1">Volte (Yvette)</h4>
+            <p class="text-[11px] text-stone-400 italic">Red tied gym shirt, white yoga shorts.</p>
+            <p class="text-xs text-stone-300 mt-2">Gym instructor; squat holds, cardio drills, and posture compliance.</p>
+          </div>
+
+          <div class="card p-4">
+            <div class="text-[10px] text-amber-400 uppercase font-semibold font-serif-title">Infirmary Medical</div>
+            <h4 class="font-serif-title font-bold text-stone-100 mt-1">Kay &amp; May</h4>
+            <p class="text-[11px] text-stone-400 italic">Kay (Head Nurse, scrubs); May (Assistant).</p>
+            <p class="text-xs text-stone-300 mt-2">Campus dispensary, wellness checks, and posture tonic inspections.</p>
+          </div>
+
+          <div class="card p-4 border-stone-600/40">
+            <div class="text-[10px] text-stone-400 uppercase font-semibold font-serif-title">Legacy Flashback</div>
+            <h4 class="font-serif-title font-bold text-stone-300 mt-1">Eva</h4>
+            <p class="text-[11px] text-stone-400 italic">Black gown, silver piping, tight bun, glasses.</p>
+            <p class="text-xs text-stone-300 mt-2">Senior teacher from Finewood's founding years, featured in origin lore.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECTION 4: THE CUBS & WARDS -->
+      <section class="roster-section" data-group="cubs">
+        <div class="flex items-center gap-3 mb-4 pb-2 border-b border-amber-500/20">
+          <span class="text-xl">🎒</span>
+          <h2 class="font-serif-title text-xl tracking-wider text-amber-300 uppercase">The Cubs &amp; Service Wards of Finewood (18 Total)</h2>
+        </div>
+        
+        <div class="card p-5 mb-4 border-amber-500/30 bg-amber-950/10">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-serif-title text-amber-400 uppercase tracking-widest font-bold">Senior Student Ward</span>
+              <h3 class="font-serif-title text-xl font-bold text-white">Head Cub</h3>
+              <p class="text-xs text-stone-300 italic">White Victorian dress with loose ponytail. Leads student roll-calls and inspects morning uniform lines.</p>
+            </div>
+            <span class="text-2xl">👑</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 text-center text-xs">
+          
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-stone-200">Alexa</div>
+            <div class="text-[10px] text-stone-400">Red blouse, black pleated skirt</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-stone-200">Annalise</div>
+            <div class="text-[10px] text-stone-400">Green dress, pink glasses</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-stone-200">Emily</div>
+            <div class="text-[10px] text-stone-400">Grey blouse, pleated skirt</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-stone-200">Evelyn</div>
+            <div class="text-[10px] text-stone-400">Red blouse, short grey skirt</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-stone-200">Johnny</div>
+            <div class="text-[10px] text-stone-400">Green blouse, grey skirt</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-stone-200">Lacina</div>
+            <div class="text-[10px] text-stone-400">Pink blouse, pink skirt, bikini</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-stone-200">Luna</div>
+            <div class="text-[10px] text-stone-400">Teal blouse, indigo skirt, pixie</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-amber-200">Marcus (Marcella)</div>
+            <div class="text-[10px] text-stone-400">Light blue blouse, skirt, patent shoes</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-stone-200">Olivia</div>
+            <div class="text-[10px] text-stone-400">Lavender blouse, purple tips</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-stone-200">Scarlet</div>
+            <div class="text-[10px] text-stone-400">Blue sweater, pleated skirt</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-stone-200">Vanessa</div>
+            <div class="text-[10px] text-stone-400">White extensions, pink hairpoint</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-black/40 border border-white/5 hover:border-amber-500/30 transition">
+            <div class="font-semibold text-stone-200">Victoria</div>
+            <div class="text-[10px] text-stone-400">Rainbow hair, plaid blouse</div>
+          </div>
+
+          <!-- Reform -->
+          <div class="p-2.5 rounded-lg bg-purple-950/20 border border-purple-500/20 hover:border-purple-400 transition">
+            <div class="font-semibold text-purple-200">Lexi (Reform)</div>
+            <div class="text-[10px] text-stone-400">Tie-dye blouse, midlength skirt</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-purple-950/20 border border-purple-500/20 hover:border-purple-400 transition">
+            <div class="font-semibold text-purple-200">Lisa (Reform)</div>
+            <div class="text-[10px] text-stone-400">Goth dress &amp; dark makeup</div>
+          </div>
+
+          <!-- Maid Service Wards -->
+          <div class="p-2.5 rounded-lg bg-blue-950/20 border border-blue-500/20 hover:border-blue-400 transition">
+            <div class="font-semibold text-blue-200">Heidi (Maid)</div>
+            <div class="text-[10px] text-stone-400">Blue maid outfit, heels</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-blue-950/20 border border-blue-500/20 hover:border-blue-400 transition">
+            <div class="font-semibold text-blue-200">Steffie Ann (Maid)</div>
+            <div class="text-[10px] text-stone-400">Black maid dress, pink sash</div>
+          </div>
+
+          <div class="p-2.5 rounded-lg bg-amber-950/20 border border-amber-500/20 hover:border-amber-400 transition col-span-2">
+            <div class="font-semibold text-amber-200">Jolene Tucker (Guest Ward)</div>
+            <div class="text-[10px] text-stone-400">White blouse, short skirt, visible bloomers</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECTION 5: THE OUTER REGIONAL ARCS & SISTER UNIVERSES -->
+      <section class="roster-section" data-group="outer">
+        <div class="flex items-center gap-3 mb-4 pb-2 border-b border-amber-500/20">
+          <span class="text-xl">🗺️</span>
+          <h2 class="font-serif-title text-xl tracking-wider text-amber-300 uppercase">The Outer Universes &amp; Sister Stories</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          <!-- Old London Estate -->
+          <div class="card p-4 border-purple-500/30">
+            <span class="text-[10px] font-serif-title uppercase text-purple-300 font-bold">🏰 The Old Estate (London)</span>
+            <h4 class="font-serif-title text-lg font-bold text-white mt-1">Lady M</h4>
+            <p class="text-xs text-stone-400 italic">Tall, stark black gown, white postilion hat.</p>
+            <p class="text-xs text-stone-300 mt-2">Step-sister to Lady D. Manages the ancestral London finishing estate where England's most rebellious society ladies were disciplined.</p>
+          </div>
+
+          <!-- Nordlandia -->
+          <div class="card p-4 border-amber-500/30">
+            <span class="text-[10px] font-serif-title uppercase text-amber-400 font-bold">🌐 Nordlandia Demerits</span>
+            <h4 class="font-serif-title text-lg font-bold text-white mt-1">Eleanor (Roaming)</h4>
+            <p class="text-xs text-stone-400 italic">High ponytail, sleek pencil skirt.</p>
+            <p class="text-xs text-stone-300 mt-2">Enforces citizen social credits and physical demerits across the fictional state of Nordlandia.</p>
+          </div>
+
+          <!-- Mother-Daughter Duos -->
+          <div class="card p-4 border-blue-500/30">
+            <span class="text-[10px] font-serif-title uppercase text-blue-300 font-bold">🏡 Suburban Neighbor Duos</span>
+            <h4 class="font-serif-title text-lg font-bold text-white mt-1">Two Households</h4>
+            <p class="text-xs text-stone-400 italic">Prim vs. Chaotic Domesticity</p>
+            <p class="text-xs text-stone-300 mt-2">
+              <strong>House 1:</strong> Eleanor Havisham (Mother) &amp; Emma (Daughter).<br>
+              <strong>House 2:</strong> Jean (Mother) &amp; Melissa (Daughter).
+            </p>
+          </div>
+
+          <!-- 1950s Retro DD -->
+          <div class="card p-4 border-rose-500/30">
+            <span class="text-[10px] font-serif-title uppercase text-rose-300 font-bold">📻 1950s Domestic Discipline</span>
+            <h4 class="font-serif-title text-lg font-bold text-white mt-1">Maria &amp; Shirley</h4>
+            <p class="text-xs text-stone-400 italic">1950s lady &amp; her nanny in retro dress.</p>
+            <p class="text-xs text-stone-300 mt-2">Innocently learning the timeless rituals of domestic discipline according to "The Book."</p>
+          </div>
+
+          <!-- The Southern Manor -->
+          <div class="card p-4 border-emerald-500/30">
+            <span class="text-[10px] font-serif-title uppercase text-emerald-300 font-bold">🌸 The Southern Manor</span>
+            <h4 class="font-serif-title text-lg font-bold text-white mt-1">Caroline, Beau &amp; Savannah</h4>
+            <p class="text-xs text-stone-400 italic">Sundresses, sweet tea, and unbending rules.</p>
+            <p class="text-xs text-stone-300 mt-2">Aunt Caroline, Beau (Abby), Savannah, and Matron Collingsworth running southern governance.</p>
+          </div>
+
+          <!-- Sister Finishing Schools -->
+          <div class="card p-4">
+            <span class="text-[10px] font-serif-title uppercase text-amber-400 font-bold">🏫 Regional School Principals</span>
+            <h4 class="font-serif-title text-lg font-bold text-white mt-1">Cordelia, Allison &amp; Amelia</h4>
+            <p class="text-xs text-stone-400 italic">Three sister institution leaders.</p>
+            <p class="text-xs text-stone-300 mt-2">
+              <strong>Cordelia:</strong> Down-home Southern Principal.<br>
+              <strong>Allison:</strong> Nearby Finishing School Principal.<br>
+              <strong>Amelia:</strong> School Principal in yellow dress suit.
+            </p>
+          </div>
+
+          <!-- West Coast Arc -->
+          <div class="card p-4">
+            <span class="text-[10px] font-serif-title uppercase text-cyan-300 font-bold">🌊 The West Coast Arc</span>
+            <h4 class="font-serif-title text-lg font-bold text-white mt-1">Ms. Astoria, Shelly &amp; Margaret</h4>
+            <p class="text-xs text-stone-400 italic">Green dress &amp; glasses with casual wards in jean shorts.</p>
+            <p class="text-xs text-stone-300 mt-2">West Coast discipline arc exploring sunshine, beach attire, and strict oversight.</p>
+          </div>
+
+          <!-- Regional Arc -->
+          <div class="card p-4">
+            <span class="text-[10px] font-serif-title uppercase text-orange-300 font-bold">🍊 "Another Area" Arc</span>
+            <h4 class="font-serif-title text-lg font-bold text-white mt-1">Etta &amp; Mary</h4>
+            <p class="text-xs text-stone-400 italic">Orange shirts and long skirts.</p>
+            <p class="text-xs text-stone-300 mt-2">Regional sister story following domestic routine and matriarchal guidance.</p>
+          </div>
+
+          <!-- Hubby & Wifey Cross-Over -->
+          <div class="card p-4 border-amber-500/50 bg-amber-950/20">
+            <span class="text-[10px] font-serif-title uppercase text-amber-300 font-bold">💑 Domestic FLR Cross-Over</span>
+            <h4 class="font-serif-title text-lg font-bold text-white mt-1">Hubby &amp; Wifey</h4>
+            <p class="text-xs text-stone-400 italic">Standalone podcast &amp; audio discussions.</p>
+            <p class="text-xs text-stone-300 mt-2">When crossing into Finewood, <strong>Hubby takes the role of Heidi</strong>, serving as personal domestic ward to <strong>Ms. Misha</strong>.</p>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Footer of Infographic -->
+    <div class="mt-12 pt-6 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs text-stone-500">
+      <div>Finewood Academy &bull; Female Led Relationship Sanctuary</div>
+      <div class="font-serif-title text-amber-500/70 uppercase tracking-widest mt-2 sm:mt-0">patreon.com/c/WifeyLed</div>
+    </div>
+
+  </div>
+
+  <script>
+    function filterSection(group) {
+      const sections = document.querySelectorAll('.roster-section');
+      const buttons = document.querySelectorAll('.filter-tag');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('bg-amber-500', 'text-black', 'font-bold');
+        btn.classList.add('bg-stone-800', 'text-stone-300');
+      });
+
+      event.target.classList.remove('bg-stone-800', 'text-stone-300');
+      event.target.classList.add('bg-amber-500', 'text-black', 'font-bold');
+
+      sections.forEach(sec => {
+        if (group === 'all' || sec.getAttribute('data-group') === group) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+        }
+      });
+    }
+
+    function toggleExportMode() {
+      const body = document.body;
+      const btn = document.getElementById('btnScreenshot');
+      body.classList.toggle('screenshot-mode');
+
+      if (body.classList.contains('screenshot-mode')) {
+        btn.textContent = '❌ Exit Screenshot Mode';
+        document.querySelectorAll('.roster-section').forEach(s => s.style.display = 'block');
+      } else {
+        btn.textContent = '📸 Toggle Clean Screenshot Mode';
+      }
+    }
+  </script>
+</body>
+</html>
