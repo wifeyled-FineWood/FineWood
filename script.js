@@ -13,7 +13,18 @@ const CONFIG = {
   PATREON_URL: "https://www.patreon.com/c/WifeyLed",
   
   // Storage key for 18+ verification persistence
-  AGE_STORAGE_KEY: "finewood_age_verified_v1"
+  AGE_STORAGE_KEY: "finewood_age_verified_v1",
+
+  // Firebase Configuration for Finewood Live Registry (Firestore)
+  FIREBASE: {
+    apiKey: "AIzaSyDaZDZY0AexfQpZetYtCYgeCrriUWi4A3I",
+    authDomain: "finewood-6860e.firebaseapp.com",
+    projectId: "finewood-6860e",
+    storageBucket: "finewood-6860e.firebasestorage.app",
+    messagingSenderId: "822221176646",
+    appId: "1:822221176646:web:fad1508e0ee21b0e406f47",
+    measurementId: "G-TRLZFH167T"
+  }
 };
 
 // ==========================================
@@ -28,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCharacterFilter();
   initFaqAccordion();
   initIntakeChat();
+  initRegistry();
 });
 
 // Update all Patreon CTA buttons across the page
@@ -748,5 +760,382 @@ function initIntakeChat() {
       });
       inputArea.appendChild(restartBtn);
     });
+  }
+}
+
+// ==========================================
+// 8. THE MATRON'S REGISTRY & PATREON BRIDGE
+// ==========================================
+function initRegistry() {
+  const form = document.getElementById("registryForm");
+  const nameInput = document.getElementById("regName");
+  const deptSelect = document.getElementById("regDepartment");
+  const messageInput = document.getElementById("regMessage");
+  const charCounter = document.getElementById("regCharCounter");
+  const streamContainer = document.getElementById("registryStream");
+  const syncStatusText = document.getElementById("syncStatusText");
+  const syncLed = document.getElementById("syncLed");
+
+  // Modal elements
+  const modal = document.getElementById("registrySuccessModal");
+  const modalBackdrop = document.getElementById("regModalBackdrop");
+  const closeModalBtn = document.getElementById("btnCloseRegModal");
+  const signedSlipBox = document.getElementById("signedSlipBox");
+  const btnSharePatreon = document.getElementById("btnSharePatreon");
+  const btnBrowseTiers = document.getElementById("btnBrowseTiersFromModal");
+  const bridgeCopyStatus = document.getElementById("bridgeCopyStatus");
+
+  if (!form || !streamContainer) return;
+
+  // Character Counter
+  if (messageInput && charCounter) {
+    messageInput.addEventListener("input", () => {
+      charCounter.textContent = `${messageInput.value.length} / 300`;
+    });
+  }
+
+  // Pre-seeded Canon Signatures (displayed on load / local mode)
+  const CANON_ENTRIES = [
+    {
+      id: "seed-1",
+      wardId: "FW-104",
+      name: "Cub Julian",
+      department: "academy",
+      message: "After 10 years of executive decision fatigue, knowing that Miss Misha and Matron Hawthorne dictate my quiet hours, posture, and bedtime is the deepest peace I have felt.",
+      timestamp: Date.now() - 1000 * 60 * 75 // 75 mins ago
+    },
+    {
+      id: "seed-2",
+      wardId: "FW-028",
+      name: "Thomas (Candidate #28)",
+      department: "domestic",
+      message: "Eleanor's chore routine left no room for hesitation. Cleaned the parquet twice before evening inspection. Relinquishing leadership saved my marriage.",
+      timestamp: Date.now() - 1000 * 60 * 60 * 14 // 14 hours ago
+    },
+    {
+      id: "seed-3",
+      wardId: "FW-319",
+      name: "Gentleman Caller Robert",
+      department: "southern",
+      message: "Aunt Caroline and Ms. Beau run Belle Bootcamp with velvet manners and iron discipline. One session under 'Ol Hickory cured my defiance forever.",
+      timestamp: Date.now() - 1000 * 60 * 60 * 36 // 36 hours ago
+    },
+    {
+      id: "seed-4",
+      wardId: "FW-108",
+      name: "Resident Ward #108",
+      department: "curfew",
+      message: "Ms. Kathy's nine o'clock curfew bell is the highlight of my evening. Surrendered will is true freedom.",
+      timestamp: Date.now() - 1000 * 60 * 60 * 72 // 3 days ago
+    }
+  ];
+
+  // Helper to format timestamps relatively
+  function formatRelativeTime(timestamp) {
+    if (!timestamp) return "Recently";
+    const now = Date.now();
+    const diff = Math.max(0, now - timestamp);
+    const mins = Math.floor(diff / (1000 * 60));
+    if (mins < 2) return "Just now";
+    if (mins < 60) return `${mins}m ago`;
+    const hours = Math.floor(mins / 60);
+    if (hours < 24) return `${hours}h ago`;
+    const days = Math.floor(hours / 24);
+    return `${days}d ago`;
+  }
+
+  // Helper to get department label and class
+  function getDeptInfo(dept) {
+    switch (dept) {
+      case "academy":
+        return { label: "Bramley Hall Academic Ward", badgeClass: "academy" };
+      case "domestic":
+        return { label: "Domestic Sanctuary & Sissy-Maid", badgeClass: "domestic" };
+      case "southern":
+        return { label: "The Southern Manor", badgeClass: "southern" };
+      case "curfew":
+      default:
+        return { label: "Curfew Remediation & Dorms", badgeClass: "curfew" };
+    }
+  }
+
+  // Render entry list
+  function renderEntries(entries) {
+    streamContainer.innerHTML = "";
+    entries.forEach((entry, idx) => {
+      const deptInfo = getDeptInfo(entry.department);
+      const initial = (entry.name || "W").trim().charAt(0).toUpperCase();
+      const timeStr = formatRelativeTime(entry.timestamp);
+
+      const entryEl = document.createElement("div");
+      entryEl.className = "registry-entry";
+      if (idx === 0 && entry.isNew) {
+        entryEl.classList.add("new-entry");
+      }
+
+      entryEl.innerHTML = `
+        <div class="entry-header">
+          <div class="entry-ward-info">
+            <div class="entry-avatar-badge ${deptInfo.badgeClass}">${initial}</div>
+            <span class="entry-name">${escapeHtml(entry.name)}</span>
+            <span class="char-badge ${deptInfo.badgeClass}">${deptInfo.label}</span>
+          </div>
+          <div class="entry-meta">
+            <span class="entry-time">${timeStr}</span>
+          </div>
+        </div>
+        <div class="entry-body ${deptInfo.badgeClass}">
+          "${escapeHtml(entry.message)}"
+        </div>
+      `;
+      streamContainer.appendChild(entryEl);
+    });
+  }
+
+  // HTML escape helper
+  function escapeHtml(str) {
+    if (!str) return "";
+    return str.replace(/[&<>"']/g, m => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;'
+    }[m]));
+  }
+
+  // Storage helper
+  function getLocalEntries() {
+    try {
+      const stored = localStorage.getItem("finewood_registry_entries");
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function saveLocalEntry(entry) {
+    try {
+      const current = getLocalEntries();
+      current.unshift(entry);
+      localStorage.setItem("finewood_registry_entries", JSON.stringify(current.slice(0, 50)));
+    } catch (e) {
+      console.warn("Storage error:", e);
+    }
+  }
+
+  // Current working list
+  let activeEntries = [...getLocalEntries(), ...CANON_ENTRIES];
+  renderEntries(activeEntries);
+
+  // Check if Firebase credentials are provided
+  let firestoreDb = null;
+  let isCloudActive = false;
+
+  if (typeof firebase !== 'undefined' && CONFIG.FIREBASE.apiKey && !CONFIG.FIREBASE.apiKey.includes("YOUR_FIREBASE_API_KEY")) {
+    try {
+      if (!firebase.apps.length) {
+        firebase.initializeApp(CONFIG.FIREBASE);
+        if (typeof firebase.analytics === 'function') {
+          try { firebase.analytics(); } catch (e) {}
+        }
+      }
+      firestoreDb = firebase.firestore();
+      isCloudActive = true;
+      if (syncStatusText && syncLed) {
+        syncStatusText.textContent = "Finewood Live Cloud Database Active";
+        syncLed.className = "sync-led live";
+      }
+
+      // Live Firestore Listener
+      firestoreDb.collection("finewood_registry")
+        .orderBy("timestamp", "desc")
+        .limit(30)
+        .onSnapshot(snapshot => {
+          if (!snapshot.empty) {
+            const cloudEntries = [];
+            snapshot.forEach(doc => {
+              const data = doc.data();
+              cloudEntries.push({
+                id: doc.id,
+                wardId: data.wardId || "FW-000",
+                name: data.name,
+                department: data.department,
+                message: data.message,
+                timestamp: data.timestamp ? (data.timestamp.toMillis ? data.timestamp.toMillis() : Date.now()) : Date.now()
+              });
+            });
+            activeEntries = cloudEntries;
+            renderEntries(activeEntries);
+          }
+        }, err => {
+          console.warn("Firestore subscription note:", err.message);
+        });
+
+    } catch (err) {
+      console.warn("Firebase initialization note:", err);
+      isCloudActive = false;
+    }
+  } else {
+    if (syncStatusText && syncLed) {
+      syncStatusText.textContent = "Finewood Live Registry (Cloud Sync Ready • Local Cache Active)";
+      syncLed.className = "sync-led live";
+    }
+  }
+
+  // Last submitted entry reference for Patreon copy
+  let lastEntry = null;
+
+  // Form Submission
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = nameInput.value.trim();
+    const dept = deptSelect.value;
+    const message = messageInput.value.trim();
+
+    if (!name || !message) return;
+
+    const wardId = "FW-" + Math.floor(1000 + Math.random() * 9000);
+    const newEntry = {
+      id: "local-" + Date.now(),
+      wardId: wardId,
+      name: name,
+      department: dept,
+      message: message,
+      timestamp: Date.now(),
+      isNew: true
+    };
+
+    lastEntry = newEntry;
+
+    // 1. If Firebase is active, persist to Cloud Firestore
+    if (isCloudActive && firestoreDb) {
+      try {
+        firestoreDb.collection("finewood_registry").add({
+          wardId: newEntry.wardId,
+          name: newEntry.name,
+          department: newEntry.department,
+          message: newEntry.message,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        }).catch(err => {
+          console.warn("Firestore write fallback to local:", err);
+        });
+      } catch (err) {
+        console.warn("Firestore write error:", err);
+      }
+    }
+
+    // 2. Always persist to localStorage
+    saveLocalEntry(newEntry);
+
+    // 3. Prepend to current feed immediately
+    activeEntries = [newEntry, ...activeEntries.filter(e => e.id !== newEntry.id)];
+    renderEntries(activeEntries);
+
+    // 4. Reset form fields
+    nameInput.value = "";
+    messageInput.value = "";
+    if (charCounter) charCounter.textContent = "0 / 300";
+
+    // 5. Open Post-Signing Patreon Conversion Modal
+    openSuccessModal(newEntry);
+  });
+
+  // Open Modal with Stamped Placement Slip
+  function openSuccessModal(entry) {
+    if (!modal || !signedSlipBox) return;
+
+    const deptInfo = getDeptInfo(entry.department);
+    const nowFormatted = new Date().toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+
+    signedSlipBox.innerHTML = `
+      <div class="slip-line"><strong>INSTITUTION:</strong> FINEWOOD ACADEMY &amp; FLM SANCTUARY</div>
+      <div class="slip-line"><strong>REGISTRY ROLL ID:</strong> ${entry.wardId}</div>
+      <div class="slip-line"><strong>WARD CALL-SIGN:</strong> ${escapeHtml(entry.name)}</div>
+      <div class="slip-line"><strong>DEPARTMENT:</strong> ${deptInfo.label}</div>
+      <div class="slip-line"><strong>DATE &amp; TIME:</strong> ${nowFormatted}</div>
+      <div class="slip-quote">"${escapeHtml(entry.message)}"</div>
+    `;
+
+    if (bridgeCopyStatus) {
+      bridgeCopyStatus.style.display = "none";
+    }
+
+    modal.style.display = "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  // Close Modal
+  function closeModal() {
+    if (!modal) return;
+    modal.style.display = "none";
+    document.body.style.overflow = "";
+  }
+
+  if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
+  if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modal && modal.style.display === "flex") {
+      closeModal();
+    }
+  });
+
+  if (btnBrowseTiers) {
+    btnBrowseTiers.addEventListener("click", () => {
+      closeModal();
+    });
+  }
+
+  // Patreon Share Action: Copy formatted slip & open Patreon community
+  if (btnSharePatreon) {
+    btnSharePatreon.addEventListener("click", () => {
+      if (!lastEntry) return;
+
+      const deptInfo = getDeptInfo(lastEntry.department);
+      const clipboardText = `⚜️ Official Finewood Academy Ward Declaration ⚜️\nRoll ID: ${lastEntry.wardId}\nWard: ${lastEntry.name}\nDepartment: ${deptInfo.label}\n\n"${lastEntry.message}"\n\nPreserved in the High Annals of Bramley Hall.\nJoin our sanctuary: ${CONFIG.PATREON_URL}`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(clipboardText).then(() => {
+          showCopySuccess();
+        }).catch(() => {
+          fallbackCopy(clipboardText);
+        });
+      } else {
+        fallbackCopy(clipboardText);
+      }
+
+      // Open Patreon Community in new tab
+      setTimeout(() => {
+        window.open(`${CONFIG.PATREON_URL}/community`, "_blank", "noopener,noreferrer");
+      }, 400);
+    });
+  }
+
+  function showCopySuccess() {
+    if (bridgeCopyStatus) {
+      bridgeCopyStatus.style.display = "block";
+      bridgeCopyStatus.textContent = "✓ Official Ward Slip copied to clipboard! Opening Patreon Community...";
+    }
+  }
+
+  function fallbackCopy(text) {
+    const tempTextarea = document.createElement("textarea");
+    tempTextarea.value = text;
+    document.body.appendChild(tempTextarea);
+    tempTextarea.select();
+    try {
+      document.execCommand("copy");
+      showCopySuccess();
+    } catch (e) {
+      console.warn("Clipboard copy failed:", e);
+    }
+    document.body.removeChild(tempTextarea);
   }
 }
