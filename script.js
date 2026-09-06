@@ -97,27 +97,33 @@ function initAgeGate() {
 const TRACKS = [
   {
     title: "Demerit Log & Cane Correction",
-    speaker: "Narrated by: Misha & Elaine • Disciplinary Office",
-    atmosphere: "Atmosphere: Ledger pen strokes, ticking clock, firm cane tap",
+    speaker: "Narrated by: Ms. Misha & Ms. Elaine • Disciplinary Liaison Office",
+    atmosphere: "Atmosphere: Leather ledger pen scratches, ticking mantel clock, firm cane cadence",
     duration: 225 // 3:45 in seconds
   },
   {
-    title: "The Sissymaid Morning Inspection",
+    title: "Sissymaid Morning Inspection",
     speaker: "Narrated by: Eleanor • Sissymaid Wing & Nordlandia",
-    atmosphere: "Atmosphere: Uniform inspection, starch rustle, stern guidance",
+    atmosphere: "Atmosphere: Starched aprons, feather duster rustle, measured domestic commands",
     duration: 252 // 4:12 in seconds
   },
   {
     title: "Level III Final Assessment",
-    speaker: "Narrated by: Celeste • Counseling Department",
-    atmosphere: "Atmosphere: Quiet office footfalls, ticking pocketwatch, absolute calm",
+    speaker: "Narrated by: Counselor Celeste • 3-Tier Counseling Wing",
+    atmosphere: "Atmosphere: Quiet office footfalls, silver pocketwatch, austere corner sentencing",
     duration: 210 // 3:30 in seconds
   },
   {
-    title: "Southern Etiquette & Quiet Surrender",
-    speaker: "Narrated by: Aunt Caroline & Beau • The Southern Manor",
-    atmosphere: "Atmosphere: Veranda breeze, porcelain cups, unyielding velvet guidance",
+    title: "Peach Blossom Principles & 'Ol Hickory",
+    speaker: "Narrated by: Aunt Caroline & Ms. Beau • The Southern Manor",
+    atmosphere: "Atmosphere: Veranda breeze, porcelain teacups, paddle correction, velvet southern charm",
     duration: 305 // 5:05 in seconds
+  },
+  {
+    title: "Bramley Hall Posture & Metronome",
+    speaker: "Narrated by: Matron Hawthorne & Ms. Wu • Music & Decorum Hall",
+    atmosphere: "Atmosphere: Relentless mechanical metronome, rattan cane taps, book-balancing drills",
+    duration: 260 // 4:20 in seconds
   }
 ];
 
@@ -381,39 +387,39 @@ function stopWebAudioSynth() {
 // ==========================================
 const EXCERPT_ARCHIVES = {
   misha: {
-    tag: "FIN-INTAKE-042 • Intake & Governance",
-    fileId: "Audio Drama Episode 14",
-    quote: "“We believe in fairness above all else. Every cub adheres to the exact same rules, and discipline is tailored to their needs… but always firm. Here, no one asks what you feel like doing, what you wish to wear, or how you think your evening should be spent. The burden of deciding who you ought to be is taken completely out of your hands.”",
+    tag: "FIN-INTAKE-042 • The Office of Demerits",
+    fileId: "Audio Drama Episode 14 • Archive Ref #4129",
+    quote: "“We believe in fairness above all else. Every cub adheres to the exact same rules, and discipline is tailored to their needs… but always firm. Chastity is strictly enforced; it lessens distractions. Here, no one asks what you feel like doing, what you wish to wear, or how you think your evening should be spent. The burden of deciding who you ought to be is taken completely out of your hands.”",
     speaker: "Ms. Misha",
-    title: "Disciplinary Registrar & Intake Dean"
+    title: "Disciplinary Registrar & Intake Dean (4,129 Archive Mentions)"
   },
   beau: {
     tag: "SOU-PEACH-019 • Peach Blossom Principles",
-    fileId: "Serialized Audio Episode 28",
-    quote: "“Well, hello there, sugar. Now don’t you look at me with those wide eyes. Pride down here is just the longest way around learning your manners. When a mother’s gentle reminders are too far away to be heard, we deliver the message in a way that sticks. Put your heels together, shoulders square, and let’s get that attitude simmered down right quick.”",
+    fileId: "Serialized Audio Episode 28 • Belle Bootcamp",
+    quote: "“Well, hello there, sugar. Now don’t you look at me with those wide eyes. Pride down here is just the longest way around learning your manners. When a mother’s gentle reminders are too far away to be heard, Peach Blossom Principles delivers the message in a way that sticks. Put your heels together, shoulders square, and let’s get that attitude simmered down right quick. 'Ol Hickory is right here in my bag.”",
     speaker: "Ms. Abby Beau",
-    title: "Southern Manor Authority & Etiquette Directress"
+    title: "Etiquette Directress & Belle Bootcamp Commander (2,081 Archive Mentions)"
   },
   elaine: {
     tag: "FIN-LIAISON-108 • Office of Discipline Liaison",
     fileId: "Demerit Log & Cane Correction Series",
     quote: "“Instructors could simply send a cub down to her office with a brief note, a name, an infraction, and the preferred implement. It kept classrooms on task and ensured no misdeed, however minor, slipped through the cracks. A raised voice in study hall, a smirk during chapel—all led swiftly and without fanfare to the olive green door. The door closed behind her with that distinct Finewood finality.”",
     speaker: "Ms. Elaine",
-    title: "Discipline Liaison & Enforcer of Standard Demerits"
+    title: "Discipline Liaison & Formal Cane Enforcer"
   },
   hawthorne: {
-    tag: "FIN-BRAMLEY-001 • Bramley Hall Music & Posture",
-    fileId: "Serialized Saga: Part IV",
-    quote: "“The polished parquet of Bramley Hall’s waiting room gleamed under the late afternoon sun, catching the shadow of Headmistress Hawthorne. Her cane—a sturdy, polished length of rattan—tapped once against the floorboard. A single sound that brought immediate, breathless stillness to every ward in the corridor. You do not explain yourself here; you simply stand straight and listen.”",
+    tag: "FIN-BRAMLEY-001 • Bramley Hall Music & Decorum",
+    fileId: "Serialized Saga: Part IV • The Metronome Suite",
+    quote: "“The polished parquet of Bramley Hall’s waiting room gleamed under the late afternoon sun, catching the shadow of Headmistress Beatrice Hawthorne. Her cane—a sturdy, polished length of rattan—tapped once against the floorboard. A single sound that brought immediate, breathless stillness to every ward in the corridor. You do not explain yourself here; you simply stand straight, bow your head, and listen.”",
     speaker: "Matron Beatrice Hawthorne",
-    title: "Directress of Bramley Hall & Academic Demerits"
+    title: "Directress of Bramley Hall & Music Disciplinarian"
   },
   kathy: {
     tag: "FIN-INSPECT-063 • Curfew & Wardrobe Inspection",
-    fileId: "Evening Protocol Audio 09",
+    fileId: "Evening Protocol Audio 09 • Dormitory Mother",
     quote: "“The office was a blend of warmth and authority—soft leather chairs and a large oak desk, but the framed motto on the wall was unmistakable: Discipline Breeds Success. When curfew sounds at nine, the corridors fall silent, the uniforms are folded precisely at the foot of each cot, and autonomy is gently tucked away until morning.”",
     speaker: "Ms. Kathy",
-    title: "Senior Residential Warden & Curfew Inspector"
+    title: "Residential Dorm Matron & Curfew Inspector (1,374 Archive Mentions)"
   }
 };
 
@@ -640,13 +646,13 @@ function initIntakeChat() {
     messagesContainer.innerHTML = "";
 
     addBotMessage(
-      `Step forward into the light. I am <strong>Matron Hawthorne</strong>, Music Director and Dean of Demerits.<br><br>I can see the exhaustion of relentless decision-making in your eyes. Before we examine your standing, state how you wish to be inscribed in the Academy ledger:`,
+      `Step forward into the light, keep your heels together, and chin tilted thirty degrees. I am <strong>Matron Beatrice Hawthorne</strong>, Directress of Bramley Hall and Dean of Demerits.<br><br>I can hear the chaotic noise of modern decision-making buzzing in your head. At Finewood, we replace that noise with the calm cadence of the metronome and total compliance. State your standing before I open the master ledger:`,
       () => {
         renderOptions([
-          { label: "A Weary Ward (Ready to surrender control)", value: "Weary Ward" },
-          { label: "Prospective Resident (Seeking evening routine)", value: "Prospective Resident" },
-          { label: "Domestic Subordinate (Need household direction)", value: "Domestic Subordinate" },
-          { label: "Curious Observer (Evaluating the rules)", value: "Observer" }
+          { label: "Weary Ward (Exhausted by daily choices; ready to surrender control)", value: "Weary Ward" },
+          { label: "Prospective Resident (Seeking evening quiet and structured curfews)", value: "Prospective Resident" },
+          { label: "Domestic Subordinate (Requesting household accountability under Eleanor)", value: "Domestic Subordinate" },
+          { label: "Classroom Cub (Prone to hesitation; needing academic decorum under Leery & Wu)", value: "Classroom Cub" }
         ], (val) => {
           intakeState.wardTitle = val;
           askFatigueQuestion();
@@ -657,13 +663,13 @@ function initIntakeChat() {
 
   function askFatigueQuestion() {
     addBotMessage(
-      `Welcome to custody, <em>${intakeState.wardTitle}</em>. At Finewood, we remove the agony of endless daily choices.<br><br>Tell me honestly: When you navigate modern life, what exhausts your mind most?`,
+      `Your shoulders are already softening, <em>${intakeState.wardTitle}</em>. At Finewood, we remove the agony of endless daily choices so you may finally breathe.<br><br>Tell me honestly: In your modern life, where did autonomy fail you most?`,
       () => {
         renderOptions([
-          { label: "Having to choose every meal, outfit, and schedule.", value: "routine" },
-          { label: "My mind racing after work; I need someone to dictate my bedtime and quiet hours.", value: "bedtime" },
-          { label: "Lack of accountability; I want chores inspected and domestic duties enforced.", value: "maid" },
-          { label: "Desire for deep psychological order and absolute female governance.", value: "authority" }
+          { label: "Paralyzed by mundane choices (meals, clothing, endless schedules).", value: "routine" },
+          { label: "My mind races after work; I need someone to dictate my quiet hours and bedtime.", value: "bedtime" },
+          { label: "Lack of domestic discipline; I crave Eleanor's chore charts and white apron inspections.", value: "maid" },
+          { label: "Exhausted by leadership; I desire matriarchal governance and absolute female authority.", value: "authority" }
         ], (val) => {
           intakeState.fatigueChoice = val;
           askDisciplineQuestion();
@@ -674,13 +680,13 @@ function initIntakeChat() {
 
   function askDisciplineQuestion() {
     addBotMessage(
-      `Order cannot exist without consequence. When your mind wanders or rules are breached, which corrective presence brings you true mental relief?`,
+      `Order cannot endure without predictable consequence. When your focus wavers or rules are breached, which corrective presence brings your mind true peace?`,
       () => {
         renderOptions([
-          { label: "Remedial study, quiet dorm confinement, and calming audio instructions.", value: "cub" },
-          { label: "Sissymaid conditioning, domestic uniform wear, and posture drills under Eleanor.", value: "sissymaid" },
-          { label: "Formal cane assessment under Elaine and ledger demerits under Misha.", value: "cane" },
-          { label: "Uncompromising behavioral counseling in Celeste's Level III office.", value: "counseling" }
+          { label: "15-minute Corner Time (hands on head) and calming audio instruction.", value: "cub" },
+          { label: "Sissymaid uniform conditioning and domestic demerits under Eleanor in Nordlandia.", value: "sissymaid" },
+          { label: "Ms. Elaine's Liaison Office: formal demerit ledger and rattan cane correction.", value: "cane" },
+          { label: "Level III Behavioral Counseling under Counselor Celeste's uncompromising eye.", value: "counseling" }
         ], (val) => {
           intakeState.disciplineChoice = val;
           renderFinalAssessment();
@@ -690,38 +696,38 @@ function initIntakeChat() {
   }
 
   function renderFinalAssessment() {
-    addBotMessage(`Your intake assessment is complete. The ledger has been inked and sealed.`, () => {
+    addBotMessage(`Your intake assessment is complete. The rattan cane rests, and the master ledger has been inked.`, () => {
       let tierName = "Senior Cub ($10/mo)";
-      let tierLevel = "Level II Resident";
-      let demeritRating = "Demerit Class III • Moderate Executive Fatigue";
+      let tierLevel = "Level II Resident Ward";
+      let demeritRating = "Demerit Class II • Curfew & Bedtime Routine Order";
       let desc = "You are in urgent need of structured evening curfews, uncut serialized audio dramas, and the comfort of zero decisions.";
 
       if (intakeState.disciplineChoice === "sissymaid" || intakeState.fatigueChoice === "maid") {
         tierName = "Sissy-Maid ($15/mo)";
         tierLevel = "Level III Domestic Ward";
-        demeritRating = "Demerit Class IV • Domestic Accountability Order";
+        demeritRating = "Demerit Class III • Domestic Service & Conditioning Remand";
         desc = "Assigned to Eleanor's conditioning wing. Includes exclusive maid service audio files, uniform guidelines, and Nordlandia demerit ledgers.";
       } else if (intakeState.disciplineChoice === "cane" || intakeState.fatigueChoice === "bedtime") {
         tierName = "Head Cub ($25/mo)";
         tierLevel = "Level IV Senior Student Ward";
-        demeritRating = "Demerit Class V • Total Surrender Required";
-        desc = "Full surrender granted. Access to exclusive POV executive relief audios, demerit dossiers, and direct prompt input.";
+        demeritRating = "Demerit Class IV • Total Surrender & Executive Relief Directive";
+        desc = "Full surrender granted. Access to exclusive POV executive bedtime relief audios, downloadable demerit dossiers, and quarterly scenario prompts.";
       } else if (intakeState.disciplineChoice === "counseling" || intakeState.fatigueChoice === "authority") {
         tierName = "Counselor ($40/mo)";
         tierLevel = "Faculty Standing";
-        demeritRating = "High Authority Immersion";
-        desc = "Admitted to the 3-Tier Counseling Wing under Astra, Melanie, and Celeste. Unlocks prompt bibles and expanded script lore.";
-      } else if (intakeState.wardTitle === "Observer") {
+        demeritRating = "Demerit Class V • High Behavioral Counseling Remand";
+        desc = "Admitted to the 3-Tier Counseling Wing under Astra, Melanie, and Celeste. Unlocks character prompt bibles and expanded script lore.";
+      } else if (intakeState.wardTitle === "Classroom Cub" || intakeState.fatigueChoice === "routine") {
         tierName = "Cub ($5/mo)";
         tierLevel = "Level I Student";
-        demeritRating = "Demerit Class I • Introductory Remediation";
-        desc = "Access to all written chapters, public galleries, and audio previews.";
+        demeritRating = "Demerit Class I • Introductory Academic Remediation";
+        desc = "Access to all written story chapters, high-res character concept art, and audio preview snippets.";
       }
 
       const resultCard = document.createElement("div");
       resultCard.className = "intake-result-card";
       resultCard.innerHTML = `
-        <div class="intake-result-title">⚜️ Official Placement Slip</div>
+        <div class="intake-result-title">⚜️ Official Finewood Placement Slip</div>
         <div class="text-[10px] uppercase tracking-wider text-amber-300/80 mb-1">${demeritRating}</div>
         <div class="intake-result-tier">${tierName}</div>
         <div class="intake-result-desc">${desc}</div>
@@ -736,7 +742,7 @@ function initIntakeChat() {
       inputArea.innerHTML = "";
       const restartBtn = document.createElement("button");
       restartBtn.className = "intake-choice-btn text-center text-xs text-stone-400";
-      restartBtn.textContent = "↺ Re-evaluate My Demerits";
+      restartBtn.textContent = "↺ Re-evaluate My Standing & Demerits";
       restartBtn.addEventListener("click", () => {
         startEvaluation();
       });
