@@ -499,93 +499,242 @@
       <div class="container">
         <div class="section-header text-center">
           <span class="section-badge">Choose Your Standing</span>
-          <h2 class="section-title">Patreon Enrollment Tiers</h2>
+          <h2 class="section-title">Official Patreon Enrollment Tiers</h2>
           <p class="section-desc">
             Support the universe and choose how deeply you wish to be immersed into the Academy and FLM Sanctuary.
           </p>
         </div>
 
-        <div class="tiers-grid">
-          <!-- Tier 1 -->
+        <!-- Tier Switcher Tabs -->
+        <div class="tier-tabs">
+          <button class="tier-tab-btn active" id="tabStudentTiers" onclick="switchTierCategory('student')">Student &amp; Ward Ranks</button>
+          <button class="tier-tab-btn" id="tabFacultyTiers" onclick="switchTierCategory('faculty')">Faculty &amp; Authority Tiers</button>
+        </div>
+
+        <!-- Category 1: Student & Ward Ranks (Cub, Senior Cub, Sissy-Maid, Head Cub) -->
+        <div class="tiers-grid-4" id="studentTiersGrid">
+          <!-- Cub ($5) -->
           <div class="tier-card">
             <div class="tier-header">
               <span class="tier-level">Level I</span>
-              <h3 class="tier-name">The Day Student</h3>
+              <h3 class="tier-name">Cub</h3>
               <div class="tier-price">
                 <span class="currency">$</span>
                 <span class="amount">5</span>
                 <span class="period">/ month</span>
               </div>
-              <p class="tier-summary">For curious observers who wish to read along and follow the daily rules.</p>
+              <p class="tier-summary">Introductory student access. Read written chapters, text releases, and public character art.</p>
             </div>
             <ul class="tier-perks">
-              <li><span>✓</span> Full access to all written story chapters &amp; text releases</li>
-              <li><span>✓</span> High-resolution public image sets &amp; character portraits</li>
-              <li><span>✓</span> 3-minute audio previews of all new serialized episodes</li>
-              <li><span>✓</span> Access to patron-only community updates &amp; polls</li>
+              <li><span>✓</span> Full access to all written story chapters</li>
+              <li><span>✓</span> Public high-res image sets &amp; portraits</li>
+              <li><span>✓</span> 3-minute preview snippets of serialized audio</li>
+              <li><span>✓</span> Access to patron community posts &amp; polls</li>
             </ul>
             <div class="tier-action">
               <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Enroll as Day Student
+                Enroll as Cub
               </a>
             </div>
           </div>
 
-          <!-- Tier 2 (Featured) -->
-          <div class="tier-card featured">
-            <div class="featured-ribbon">Most Popular Enrollment</div>
+          <!-- Senior Cub ($10) -->
+          <div class="tier-card">
             <div class="tier-header">
               <span class="tier-level">Level II</span>
-              <h3 class="tier-name">Enrolled Ward / Resident</h3>
+              <h3 class="tier-name">Senior Cub</h3>
               <div class="tier-price">
                 <span class="currency">$</span>
                 <span class="amount">10</span>
                 <span class="period">/ month</span>
               </div>
-              <p class="tier-summary">Full surrender. Complete audio dramas, uncensored story arcs, and voting rights.</p>
+              <p class="tier-summary">Deeper immersion. Uncut serialized audio dramas and complete story galleries.</p>
             </div>
             <ul class="tier-perks">
-              <li><span>✓</span> <strong>Everything in Tier 1</strong></li>
-              <li><span>✓</span> <strong>Uncut full-length Audio Dramas</strong> (15-45 min episodes)</li>
-              <li><span>✓</span> Complete uncensored image galleries (uniform variations, discipline scenes)</li>
-              <li><span>✓</span> Monthly voting rights on upcoming disciplinary story arcs &amp; infractions</li>
-              <li><span>✓</span> Early access to new weekly series 48 hours in advance</li>
+              <li><span>✓</span> <strong>Everything in Cub</strong></li>
+              <li><span>✓</span> <strong>Uncut full-length Audio Dramas</strong></li>
+              <li><span>✓</span> Private Audio RSS podcast link for Apple/Spotify</li>
+              <li><span>✓</span> Complete uncensored image galleries &amp; scenes</li>
+              <li><span>✓</span> Monthly voting rights on upcoming story arcs</li>
             </ul>
             <div class="tier-action">
-              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-gold btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Enroll as Full Resident
+              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
+                Enroll as Senior Cub
               </a>
             </div>
           </div>
 
-          <!-- Tier 3 (VIP) -->
+          <!-- Sissy-Maid ($15) -->
           <div class="tier-card">
             <div class="tier-header">
               <span class="tier-level">Level III</span>
-              <h3 class="tier-name">The Matron's Ledger</h3>
+              <h3 class="tier-name">Sissy-Maid</h3>
+              <div class="tier-price">
+                <span class="currency">$</span>
+                <span class="amount">15</span>
+                <span class="period">/ month</span>
+              </div>
+              <p class="tier-summary">Total domestic surrender. Dedicated maid service lore, conditioning audio, and Nordlandia files.</p>
+            </div>
+            <ul class="tier-perks">
+              <li><span>✓</span> <strong>Everything in Senior Cub</strong></li>
+              <li><span>✓</span> <strong>Exclusive Sissy-Maid &amp; Conditioning Audios</strong></li>
+              <li><span>✓</span> Eleanor's Nordlandia Demerit &amp; Chore Ledgers</li>
+              <li><span>✓</span> Maid uniform variations &amp; disciplinary artwork</li>
+              <li><span>✓</span> Early access to new weekly series 48h in advance</li>
+            </ul>
+            <div class="tier-action">
+              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
+                Enroll as Sissy-Maid
+              </a>
+            </div>
+          </div>
+
+          <!-- Head Cub ($25 - Featured) -->
+          <div class="tier-card featured">
+            <div class="featured-ribbon">Most Popular Enrollment</div>
+            <div class="tier-header">
+              <span class="tier-level">Level IV</span>
+              <h3 class="tier-name">Head Cub</h3>
               <div class="tier-price">
                 <span class="currency">$</span>
                 <span class="amount">25</span>
                 <span class="period">/ month</span>
               </div>
-              <p class="tier-summary">The ultimate immersion. Exclusive POV instruction audios, demerit dossiers, and direct input.</p>
+              <p class="tier-summary">Senior student leader standing. Exclusive POV bedtime relief, demerit dossiers, and direct input.</p>
             </div>
             <ul class="tier-perks">
-              <li><span>✓</span> <strong>Everything in Tiers 1 &amp; 2</strong></li>
-              <li><span>✓</span> <strong>Exclusive POV "Executive Relief" Audios</strong> (bedtime routine commands, relaxation)</li>
-              <li><span>✓</span> Downloadable Finewood Worldbuilding Dossiers (rulebooks, demerit slips)</li>
+              <li><span>✓</span> <strong>Everything in Sissy-Maid</strong></li>
+              <li><span>✓</span> <strong>Exclusive POV "Executive Relief" Audios</strong> (bedtime routine commands &amp; relaxation)</li>
+              <li><span>✓</span> Downloadable Finewood Demerit Dossiers &amp; Rulebooks</li>
               <li><span>✓</span> Submit your own scenario prompt for quarterly featured stories</li>
-              <li><span>✓</span> VIP name listed in the Finewood Academy Official Register</li>
+              <li><span>✓</span> Official Register acknowledgment</li>
             </ul>
             <div class="tier-action">
-              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Claim VIP Custody
+              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-gold btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
+                Enroll as Head Cub
               </a>
             </div>
           </div>
         </div>
 
-        <div class="patreon-guarantee">
+        <!-- Category 2: Faculty & Authority Tiers (Counselor, Instructor, Headmistress) -->
+        <div class="tiers-grid-3" id="facultyTiersGrid" style="display: none;">
+          <!-- Counselor ($40) -->
+          <div class="tier-card">
+            <div class="tier-header">
+              <span class="tier-level">Faculty Rank</span>
+              <h3 class="tier-name">Counselor</h3>
+              <div class="tier-price">
+                <span class="currency">$</span>
+                <span class="amount">40</span>
+                <span class="period">/ month</span>
+              </div>
+              <p class="tier-summary">Step into the counseling department under Astra, Melanie, and Celeste. Deep worldbuilding access.</p>
+            </div>
+            <ul class="tier-perks">
+              <li><span>✓</span> <strong>All Head Cub perks</strong></li>
+              <li><span>✓</span> Exclusive 3-Tier Behavioral Counseling audio sessions</li>
+              <li><span>✓</span> High-resolution prompt bibles &amp; image generation recipes</li>
+              <li><span>✓</span> Behind-the-scenes writing notes &amp; expanded scripts</li>
+              <li><span>✓</span> Priority voting weight on character development</li>
+            </ul>
+            <div class="tier-action">
+              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
+                Enroll as Counselor
+              </a>
+            </div>
+          </div>
+
+          <!-- Instructor ($60) -->
+          <div class="tier-card">
+            <div class="tier-header">
+              <span class="tier-level">Faculty Rank</span>
+              <h3 class="tier-name">Instructor</h3>
+              <div class="tier-price">
+                <span class="currency">$</span>
+                <span class="amount">60</span>
+                <span class="period">/ month</span>
+              </div>
+              <p class="tier-summary">Department authority standing (Hawthorne, Leery, Wu). Directly influence curriculum and stories.</p>
+            </div>
+            <ul class="tier-perks">
+              <li><span>✓</span> <strong>All Counselor perks</strong></li>
+              <li><span>✓</span> Bi-monthly customized audio dedication / character reading</li>
+              <li><span>✓</span> Raw uncompressed audio stems &amp; full ambient soundscapes</li>
+              <li><span>✓</span> Direct line for series brainstorming with the creator</li>
+              <li><span>✓</span> Senior Faculty honor roll listing</li>
+            </ul>
+            <div class="tier-action">
+              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
+                Enroll as Instructor
+              </a>
+            </div>
+          </div>
+
+          <!-- Headmistress ($80 - Limited) -->
+          <div class="tier-card featured">
+            <div class="featured-ribbon">Supreme Prestige</div>
+            <div class="tier-header">
+              <span class="tier-level">High Governance</span>
+              <h3 class="tier-name">Headmistress</h3>
+              <div class="tier-price">
+                <span class="currency">$</span>
+                <span class="amount">80</span>
+                <span class="period">/ month</span>
+              </div>
+              <span class="tier-limited-badge">Limited Standing &bull; 2 of 3 Enrolled</span>
+              <p class="tier-summary">Ultimate executive patronage alongside Ophelia and Andrea. Shape the destiny of Finewood.</p>
+            </div>
+            <ul class="tier-perks">
+              <li><span>✓</span> <strong>Complete Universal All-Access Archive</strong></li>
+              <li><span>✓</span> Personal custom-scripted story episode or character arc inclusion</li>
+              <li><span>✓</span> Executive advisory input on multi-part sagas</li>
+              <li><span>✓</span> Exclusive VIP 1-on-1 patron channel</li>
+              <li><span>✓</span> Permanent founding headmistress immortalization</li>
+            </ul>
+            <div class="tier-action">
+              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-gold btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
+                Claim Headmistress Seat
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- The High Benefactors Plaque (Silver $500 & Gold $1000) -->
+        <div class="benefactor-section">
+          <div class="benefactor-crest">⚜️</div>
+          <h3 class="benefactor-title">The High Benefactors of Finewood</h3>
+          <p class="benefactor-subtitle">
+            Established for the extraordinary patrons whose profound generosity directly sustains the expansion of our audio dramas, visual archives, and serialized universe.
+          </p>
+
+          <div class="charter-grid">
+            <div class="charter-card">
+              <div class="charter-tier-name">Silver Charter</div>
+              <div class="charter-price">$500 <span class="text-xs text-stone-400 font-normal">/ month</span></div>
+              <p class="charter-desc">
+                Esteemed patron charter status. Unlocks permanent dedication in all serialized productions, executive producer billing, and our deepest gratitude for bringing the sanctuary to life.
+              </p>
+              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
+                Become Silver Charter Patron
+              </a>
+            </div>
+
+            <div class="charter-card border-amber-400">
+              <div class="charter-tier-name text-amber-300">Gold Charter</div>
+              <div class="charter-price">$1,000 <span class="text-xs text-stone-400 font-normal">/ month</span></div>
+              <p class="charter-desc">
+                Supreme foundational benefactor. Direct co-creation of an entire regional storyline or dedicated character house, custom voice casting, and permanent legendary standing in the Finewood annals.
+              </p>
+              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-gold btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
+                Become Gold Charter Patron
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="patreon-guarantee mt-8">
           <span class="lock-icon">🔒</span>
           <span>Billed securely through Patreon. Cancel or adjust your tier at any moment with zero penalty.</span>
         </div>
@@ -730,6 +879,34 @@
       </div>
     </div>
   </footer>
+
+  <!-- Option 3: Interactive In-Universe Intake Terminal (Matron Hawthorne) -->
+  <button id="intakeFab" class="intake-fab" title="Report to the Office of Demerits">
+    <span class="fab-pulse"></span>
+    <span class="fab-icon">⚜️</span>
+    <span class="fab-label">Office of Demerits • Intake</span>
+  </button>
+
+  <div id="intakeChatModal" class="intake-chat-window" style="display: none;">
+    <div class="intake-chat-header">
+      <div class="intake-header-left">
+        <div class="intake-avatar">H</div>
+        <div>
+          <div class="intake-header-title">Matron Hawthorne</div>
+          <div class="intake-header-subtitle"><span class="status-dot"></span> Active Intake &bull; Demerit Desk</div>
+        </div>
+      </div>
+      <button id="intakeCloseBtn" class="intake-close-btn" title="Minimize Evaluation">&times;</button>
+    </div>
+
+    <div class="intake-chat-body" id="intakeChatMessages">
+      <!-- Chat bubbles injected by script.js -->
+    </div>
+
+    <div class="intake-chat-footer" id="intakeChatInputArea">
+      <!-- Options injected by script.js -->
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>

@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initAudioPlayer();
   initCharacterFilter();
   initFaqAccordion();
+  initIntakeChat();
 });
 
 // Update all Patreon CTA buttons across the page
@@ -415,4 +416,217 @@ function initFaqAccordion() {
       }
     });
   });
+}
+
+// ==========================================
+// 7. TIER CATEGORY SWITCHER
+// ==========================================
+window.switchTierCategory = function(category) {
+  const studentGrid = document.getElementById("studentTiersGrid");
+  const facultyGrid = document.getElementById("facultyTiersGrid");
+  const tabStudent = document.getElementById("tabStudentTiers");
+  const tabFaculty = document.getElementById("tabFacultyTiers");
+
+  if (!studentGrid || !facultyGrid) return;
+
+  if (category === "student") {
+    studentGrid.style.display = "grid";
+    facultyGrid.style.display = "none";
+    if (tabStudent) tabStudent.classList.add("active");
+    if (tabFaculty) tabFaculty.classList.remove("active");
+  } else {
+    studentGrid.style.display = "none";
+    facultyGrid.style.display = "grid";
+    if (tabStudent) tabStudent.classList.remove("active");
+    if (tabFaculty) tabFaculty.classList.add("active");
+  }
+};
+
+// ==========================================
+// 8. OPTION 3: INTERACTIVE INTAKE CHATBOT (MATRON HAWTHORNE)
+// ==========================================
+function initIntakeChat() {
+  const fab = document.getElementById("intakeFab");
+  const modal = document.getElementById("intakeChatModal");
+  const closeBtn = document.getElementById("intakeCloseBtn");
+  const messagesContainer = document.getElementById("intakeChatMessages");
+  const inputArea = document.getElementById("intakeChatInputArea");
+
+  if (!fab || !modal || !messagesContainer || !inputArea) return;
+
+  let intakeState = {
+    step: 0,
+    wardTitle: "Weary Ward",
+    fatigueChoice: "",
+    disciplineChoice: ""
+  };
+
+  // Open / Close Drawer
+  fab.addEventListener("click", () => {
+    modal.style.display = "flex";
+    fab.style.display = "none";
+    if (messagesContainer.children.length === 0) {
+      startEvaluation();
+    }
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+    fab.style.display = "flex";
+  });
+
+  function addBotMessage(htmlContent, callback) {
+    // Show typing indicator
+    const typingIndicator = document.createElement("div");
+    typingIndicator.className = "intake-typing";
+    typingIndicator.id = "intakeTyping";
+    typingIndicator.innerHTML = `<span>⚜️ Matron Hawthorne is noting your demeanor...</span>`;
+    messagesContainer.appendChild(typingIndicator);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+    setTimeout(() => {
+      const el = document.getElementById("intakeTyping");
+      if (el) el.remove();
+
+      const msgDiv = document.createElement("div");
+      msgDiv.className = "intake-msg intake-msg-bot";
+      msgDiv.innerHTML = htmlContent;
+      messagesContainer.appendChild(msgDiv);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      if (callback) callback();
+    }, 600);
+  }
+
+  function addUserMessage(text) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = "intake-msg intake-msg-user";
+    msgDiv.textContent = text;
+    messagesContainer.appendChild(msgDiv);
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+  }
+
+  function renderOptions(optionsArray, onSelect) {
+    inputArea.innerHTML = "";
+    optionsArray.forEach(opt => {
+      const btn = document.createElement("button");
+      btn.className = "intake-choice-btn";
+      btn.textContent = opt.label;
+      btn.addEventListener("click", () => {
+        addUserMessage(opt.label);
+        inputArea.innerHTML = "";
+        onSelect(opt.value);
+      });
+      inputArea.appendChild(btn);
+    });
+  }
+
+  function startEvaluation() {
+    intakeState = { step: 0, wardTitle: "Weary Ward", fatigueChoice: "", disciplineChoice: "" };
+    messagesContainer.innerHTML = "";
+
+    addBotMessage(
+      `Step forward into the light. I am <strong>Matron Hawthorne</strong>, Music Director and Dean of Demerits.<br><br>I can see the exhaustion of relentless decision-making in your eyes. Before we examine your standing, state how you wish to be inscribed in the Academy ledger:`,
+      () => {
+        renderOptions([
+          { label: "A Weary Ward (Ready to surrender control)", value: "Weary Ward" },
+          { label: "Prospective Resident (Seeking evening routine)", value: "Prospective Resident" },
+          { label: "Domestic Subordinate (Need household direction)", value: "Domestic Subordinate" },
+          { label: "Curious Observer (Evaluating the rules)", value: "Observer" }
+        ], (val) => {
+          intakeState.wardTitle = val;
+          askFatigueQuestion();
+        });
+      }
+    );
+  }
+
+  function askFatigueQuestion() {
+    addBotMessage(
+      `Welcome to custody, <em>${intakeState.wardTitle}</em>. At Finewood, we remove the agony of endless daily choices.<br><br>Tell me honestly: When you navigate modern life, what exhausts your mind most?`,
+      () => {
+        renderOptions([
+          { label: "Having to choose every meal, outfit, and schedule.", value: "routine" },
+          { label: "My mind racing after work; I need someone to dictate my bedtime and quiet hours.", value: "bedtime" },
+          { label: "Lack of accountability; I want chores inspected and domestic duties enforced.", value: "maid" },
+          { label: "Desire for deep psychological order and absolute female governance.", value: "authority" }
+        ], (val) => {
+          intakeState.fatigueChoice = val;
+          askDisciplineQuestion();
+        });
+      }
+    );
+  }
+
+  function askDisciplineQuestion() {
+    addBotMessage(
+      `Order cannot exist without consequence. When your mind wanders or rules are breached, which corrective presence brings you true mental relief?`,
+      () => {
+        renderOptions([
+          { label: "Remedial study, quiet dorm confinement, and calming audio instructions.", value: "cub" },
+          { label: "Sissymaid conditioning, domestic uniform wear, and posture drills under Eleanor.", value: "sissymaid" },
+          { label: "Formal cane assessment under Elaine and ledger demerits under Misha.", value: "cane" },
+          { label: "Uncompromising behavioral counseling in Celeste's Level III office.", value: "counseling" }
+        ], (val) => {
+          intakeState.disciplineChoice = val;
+          renderFinalAssessment();
+        });
+      }
+    );
+  }
+
+  function renderFinalAssessment() {
+    addBotMessage(`Your intake assessment is complete. The ledger has been inked and sealed.`, () => {
+      let tierName = "Senior Cub ($10/mo)";
+      let tierLevel = "Level II Resident";
+      let demeritRating = "Demerit Class III • Moderate Executive Fatigue";
+      let desc = "You are in urgent need of structured evening curfews, uncut serialized audio dramas, and the comfort of zero decisions.";
+
+      if (intakeState.disciplineChoice === "sissymaid" || intakeState.fatigueChoice === "maid") {
+        tierName = "Sissy-Maid ($15/mo)";
+        tierLevel = "Level III Domestic Ward";
+        demeritRating = "Demerit Class IV • Domestic Accountability Order";
+        desc = "Assigned to Eleanor's conditioning wing. Includes exclusive maid service audio files, uniform guidelines, and Nordlandia demerit ledgers.";
+      } else if (intakeState.disciplineChoice === "cane" || intakeState.fatigueChoice === "bedtime") {
+        tierName = "Head Cub ($25/mo)";
+        tierLevel = "Level IV Senior Student Ward";
+        demeritRating = "Demerit Class V • Total Surrender Required";
+        desc = "Full surrender granted. Access to exclusive POV executive relief audios, demerit dossiers, and direct prompt input.";
+      } else if (intakeState.disciplineChoice === "counseling" || intakeState.fatigueChoice === "authority") {
+        tierName = "Counselor ($40/mo)";
+        tierLevel = "Faculty Standing";
+        demeritRating = "High Authority Immersion";
+        desc = "Admitted to the 3-Tier Counseling Wing under Astra, Melanie, and Celeste. Unlocks prompt bibles and expanded script lore.";
+      } else if (intakeState.wardTitle === "Observer") {
+        tierName = "Cub ($5/mo)";
+        tierLevel = "Level I Student";
+        demeritRating = "Demerit Class I • Introductory Remediation";
+        desc = "Access to all written chapters, public galleries, and audio previews.";
+      }
+
+      const resultCard = document.createElement("div");
+      resultCard.className = "intake-result-card";
+      resultCard.innerHTML = `
+        <div class="intake-result-title">⚜️ Official Placement Slip</div>
+        <div class="text-[10px] uppercase tracking-wider text-amber-300/80 mb-1">${demeritRating}</div>
+        <div class="intake-result-tier">${tierName}</div>
+        <div class="intake-result-desc">${desc}</div>
+        <a href="${CONFIG.PATREON_URL}" class="btn btn-gold btn-block btn-sm" target="_blank" rel="noopener noreferrer">
+          Claim Placement on Patreon →
+        </a>
+      `;
+      messagesContainer.appendChild(resultCard);
+      messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+      // Reset / Try again option
+      inputArea.innerHTML = "";
+      const restartBtn = document.createElement("button");
+      restartBtn.className = "intake-choice-btn text-center text-xs text-stone-400";
+      restartBtn.textContent = "↺ Re-evaluate My Demerits";
+      restartBtn.addEventListener("click", () => {
+        startEvaluation();
+      });
+      inputArea.appendChild(restartBtn);
+    });
+  }
 }
