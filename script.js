@@ -21,8 +21,10 @@ const CONFIG = {
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
   initPatreonLinks();
+  initMobileNav();
   initAgeGate();
   initAudioPlayer();
+  initExcerptViewer();
   initCharacterFilter();
   initFaqAccordion();
   initIntakeChat();
@@ -33,6 +35,26 @@ function initPatreonLinks() {
   const patreonButtons = document.querySelectorAll(".patreon-cta-btn");
   patreonButtons.forEach(btn => {
     btn.setAttribute("href", CONFIG.PATREON_URL);
+  });
+}
+
+// Mobile Hamburger Navigation Drawer
+function initMobileNav() {
+  const toggleBtn = document.getElementById("navToggle");
+  const navLinks = document.getElementById("navLinks");
+  if (!toggleBtn || !navLinks) return;
+
+  toggleBtn.addEventListener("click", () => {
+    toggleBtn.classList.toggle("open");
+    navLinks.classList.toggle("open");
+  });
+
+  const links = navLinks.querySelectorAll("a");
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      toggleBtn.classList.remove("open");
+      navLinks.classList.remove("open");
+    });
   });
 }
 
@@ -352,6 +374,98 @@ function stopWebAudioSynth() {
     droneGain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.05);
     droneGain = null;
   }
+}
+
+// ==========================================
+// 4B. THE FINEWOOD CHRONICLES (EXCERPTS VIEWER)
+// ==========================================
+const EXCERPT_ARCHIVES = {
+  misha: {
+    tag: "FIN-INTAKE-042 • Intake & Governance",
+    fileId: "Audio Drama Episode 14",
+    quote: "“We believe in fairness above all else. Every cub adheres to the exact same rules, and discipline is tailored to their needs… but always firm. Here, no one asks what you feel like doing, what you wish to wear, or how you think your evening should be spent. The burden of deciding who you ought to be is taken completely out of your hands.”",
+    speaker: "Ms. Misha",
+    title: "Disciplinary Registrar & Intake Dean"
+  },
+  beau: {
+    tag: "SOU-PEACH-019 • Peach Blossom Principles",
+    fileId: "Serialized Audio Episode 28",
+    quote: "“Well, hello there, sugar. Now don’t you look at me with those wide eyes. Pride down here is just the longest way around learning your manners. When a mother’s gentle reminders are too far away to be heard, we deliver the message in a way that sticks. Put your heels together, shoulders square, and let’s get that attitude simmered down right quick.”",
+    speaker: "Ms. Abby Beau",
+    title: "Southern Manor Authority & Etiquette Directress"
+  },
+  elaine: {
+    tag: "FIN-LIAISON-108 • Office of Discipline Liaison",
+    fileId: "Demerit Log & Cane Correction Series",
+    quote: "“Instructors could simply send a cub down to her office with a brief note, a name, an infraction, and the preferred implement. It kept classrooms on task and ensured no misdeed, however minor, slipped through the cracks. A raised voice in study hall, a smirk during chapel—all led swiftly and without fanfare to the olive green door. The door closed behind her with that distinct Finewood finality.”",
+    speaker: "Ms. Elaine",
+    title: "Discipline Liaison & Enforcer of Standard Demerits"
+  },
+  hawthorne: {
+    tag: "FIN-BRAMLEY-001 • Bramley Hall Music & Posture",
+    fileId: "Serialized Saga: Part IV",
+    quote: "“The polished parquet of Bramley Hall’s waiting room gleamed under the late afternoon sun, catching the shadow of Headmistress Hawthorne. Her cane—a sturdy, polished length of rattan—tapped once against the floorboard. A single sound that brought immediate, breathless stillness to every ward in the corridor. You do not explain yourself here; you simply stand straight and listen.”",
+    speaker: "Matron Beatrice Hawthorne",
+    title: "Directress of Bramley Hall & Academic Demerits"
+  },
+  kathy: {
+    tag: "FIN-INSPECT-063 • Curfew & Wardrobe Inspection",
+    fileId: "Evening Protocol Audio 09",
+    quote: "“The office was a blend of warmth and authority—soft leather chairs and a large oak desk, but the framed motto on the wall was unmistakable: Discipline Breeds Success. When curfew sounds at nine, the corridors fall silent, the uniforms are folded precisely at the foot of each cot, and autonomy is gently tucked away until morning.”",
+    speaker: "Ms. Kathy",
+    title: "Senior Residential Warden & Curfew Inspector"
+  }
+};
+
+window.switchExcerptTab = function(tabId) {
+  const item = EXCERPT_ARCHIVES[tabId];
+  if (!item) return;
+
+  const card = document.getElementById("folioCard");
+  const tabBtns = document.querySelectorAll(".excerpt-tab-btn");
+
+  tabBtns.forEach(btn => {
+    if (btn.getAttribute("data-tab") === tabId) {
+      btn.classList.add("active");
+    } else {
+      btn.classList.remove("active");
+    }
+  });
+
+  if (card) {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(8px)";
+    card.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+
+    setTimeout(() => {
+      const tagEl = document.getElementById("folioArchiveTag");
+      const idEl = document.getElementById("folioFileId");
+      const quoteEl = document.getElementById("folioQuote");
+      const speakerEl = document.getElementById("folioSpeaker");
+      const titleEl = document.getElementById("folioSpeakerTitle");
+
+      if (tagEl) tagEl.textContent = item.tag;
+      if (idEl) idEl.textContent = item.fileId;
+      if (quoteEl) quoteEl.textContent = item.quote;
+      if (speakerEl) speakerEl.textContent = item.speaker;
+      if (titleEl) titleEl.textContent = item.title;
+
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    }, 200);
+  }
+};
+
+function initExcerptViewer() {
+  const tabBtns = document.querySelectorAll(".excerpt-tab-btn");
+  tabBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const tabId = btn.getAttribute("data-tab");
+      if (tabId) {
+        window.switchExcerptTab(tabId);
+      }
+    });
+  });
 }
 
 // ==========================================

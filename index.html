@@ -57,9 +57,16 @@
         </span>
       </a>
 
-      <nav class="nav-links">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+
+      <nav class="nav-links" id="navLinks">
         <a href="#philosophy">The Sanctuary</a>
         <a href="#audio-preview">Audio Experience</a>
+        <a href="#excerpts">The Chronicles</a>
         <a href="#characters">Faculty &amp; Residents</a>
         <a href="#tiers">Enrollment Tiers</a>
         <a href="#faq">FAQ</a>
@@ -113,18 +120,18 @@
 
         <div class="hero-metrics">
           <div class="metric-item">
-            <span class="metric-val">50+</span>
-            <span class="metric-lbl">Audio Chapters</span>
+            <span class="metric-val">537+</span>
+            <span class="metric-lbl">Script Archives</span>
           </div>
           <div class="metric-divider"></div>
           <div class="metric-item">
-            <span class="metric-val">25+</span>
-            <span class="metric-lbl">Consistent Characters</span>
+            <span class="metric-val">57</span>
+            <span class="metric-lbl">Canon Personages</span>
           </div>
           <div class="metric-divider"></div>
           <div class="metric-item">
-            <span class="metric-val">Weekly</span>
-            <span class="metric-lbl">Illustrated Episodes</span>
+            <span class="metric-val">9</span>
+            <span class="metric-lbl">Sanctuary Worlds</span>
           </div>
           <div class="metric-divider"></div>
           <div class="metric-item">
@@ -311,6 +318,50 @@
       </div>
     </section>
 
+    <!-- The Finewood Chronicles: SFW Canon Excerpts -->
+    <section id="excerpts" class="section excerpts-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <span class="section-badge">From The Canon Archives</span>
+          <h2 class="section-title">The Finewood Chronicles</h2>
+          <p class="section-desc">
+            Authentic, serialized excerpts directly from our 537+ script archives. Experience the calm authority, strict routines, and psychological relief of total surrender.
+          </p>
+        </div>
+
+        <!-- Excerpt Tab Controls -->
+        <div class="excerpt-tab-controls" id="excerptTabControls">
+          <button class="excerpt-tab-btn active" data-tab="misha" onclick="switchExcerptTab('misha')">Ms. Misha's Ledger</button>
+          <button class="excerpt-tab-btn" data-tab="beau" onclick="switchExcerptTab('beau')">Ms. Beau's Southern Principles</button>
+          <button class="excerpt-tab-btn" data-tab="elaine" onclick="switchExcerptTab('elaine')">Ms. Elaine's Discipline Liaison</button>
+          <button class="excerpt-tab-btn" data-tab="hawthorne" onclick="switchExcerptTab('hawthorne')">Matron Hawthorne's Study</button>
+          <button class="excerpt-tab-btn" data-tab="kathy" onclick="switchExcerptTab('kathy')">Ms. Kathy's Curfew Inspection</button>
+        </div>
+
+        <!-- Excerpt Display Card -->
+        <div class="excerpt-folio-card" id="folioCard">
+          <div class="excerpt-folio-header">
+            <div class="folio-archive-tag" id="folioArchiveTag">FIN-INTAKE-042 • Intake &amp; Governance</div>
+            <div class="folio-file-id" id="folioFileId">Audio Drama Episode 14</div>
+          </div>
+
+          <blockquote class="excerpt-quote" id="folioQuote">
+            “We believe in fairness above all else. Every cub adheres to the exact same rules, and discipline is tailored to their needs… but always firm. Here, no one asks what you feel like doing, what you wish to wear, or how you think your evening should be spent. The burden of deciding who you ought to be is taken completely out of your hands.”
+          </blockquote>
+
+          <div class="excerpt-footer">
+            <div class="excerpt-authority">
+              <span class="authority-name" id="folioSpeaker">Ms. Misha</span>
+              <span class="authority-title" id="folioSpeakerTitle">Disciplinary Registrar &amp; Intake Dean</span>
+            </div>
+            <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-gold btn-sm patreon-cta-btn" target="_blank" rel="noopener noreferrer">
+              Unlock Full Uncut Audio &rarr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Character & Faculty Showcase -->
     <section id="characters" class="section characters-section">
       <div class="container">
@@ -487,6 +538,46 @@
               <p class="char-dress">Aunt Caroline in light green southern dress; Beau in a bright yellow sundress and loose ponytail.</p>
               <p class="char-desc">
                 Velvet hospitality wrapped around an iron will. Overseeing the tranquil Southern Manor, proving that a well-managed gentleman is a peaceful gentleman.
+              </p>
+            </div>
+          </div>
+
+          <!-- Kathy & Head Cub -->
+          <div class="char-card" data-category="academy">
+            <div class="char-avatar-wrapper">
+              <div class="char-avatar-fallback academy-border">
+                <span class="char-initial">K</span>
+                <span class="char-tag-role">Curfew &amp; Dorms</span>
+              </div>
+            </div>
+            <div class="char-info">
+              <div class="char-header">
+                <h3>Kathy &amp; Head Cub</h3>
+                <span class="char-badge">Residential Authority</span>
+              </div>
+              <p class="char-dress">Kathy (navy blue blazer Victorian dress); Head Cub (white Victorian dress, hair in loose ponytail).</p>
+              <p class="char-desc">
+                Overnight hall monitors and curfew inspectors. Kathy enforces dormitory discipline and hallway decorum, ensuring that evening study hours remain silent and focused.
+              </p>
+            </div>
+          </div>
+
+          <!-- Volte & Heidi -->
+          <div class="char-card" data-category="domestic">
+            <div class="char-avatar-wrapper">
+              <div class="char-avatar-fallback domestic-border">
+                <span class="char-initial">V</span>
+                <span class="char-tag-role">Regimen &amp; Service</span>
+              </div>
+            </div>
+            <div class="char-info">
+              <div class="char-header">
+                <h3>Volte &amp; Heidi</h3>
+                <span class="char-badge">Physical &amp; Domestic Regimen</span>
+              </div>
+              <p class="char-dress">Volte (blonde French athletic instructor in tied red shirt); Heidi (blue maid uniform with frilly sleeves).</p>
+              <p class="char-desc">
+                Combining rigorous physical posture conditioning with immaculately detailed domestic service training across the Nordlandia estates.
               </p>
             </div>
           </div>
