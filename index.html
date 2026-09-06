@@ -693,6 +693,28 @@
               </button>
             </form>
 
+            <!-- In-Page Confirmation (Zero Interruption, Stays On Page) -->
+            <div class="registry-signed-banner" id="registrySignedBanner" style="display: none;">
+              <div class="banner-top">
+                <span class="banner-crest">⚜</span>
+                <div>
+                  <strong>Signature Inscribed in the High Annals</strong>
+                  <p id="bannerRollText">Assigned Roll ID: FW-7412 &bull; Preserved in Bramley Hall</p>
+                </div>
+              </div>
+              <div class="banner-actions">
+                <button type="button" class="btn-banner-action" id="btnBannerCopySlip" title="Copy your Ward Slip to clipboard">
+                  <span>📋 Copy Ward Slip</span>
+                </button>
+                <a href="https://www.patreon.com/c/WifeyLed/community" target="_blank" rel="noopener noreferrer" class="btn-banner-action patreon-link" id="btnBannerPatreonLink">
+                  <span>⚜ Patreon Community (Optional) &rarr;</span>
+                </a>
+              </div>
+              <div class="banner-copy-feedback" id="bannerCopyFeedback" style="display: none;">
+                ✓ Official Ward Slip copied to clipboard!
+              </div>
+            </div>
+
             <div class="registry-sync-status" id="registrySyncStatus">
               <span class="sync-led live" id="syncLed"></span>
               <span id="syncStatusText">Finewood Live Registry Active</span>
@@ -711,49 +733,6 @@
 
             <div class="registry-stream" id="registryStream">
               <!-- Live entries will populate here -->
-            </div>
-          </div>
-        </div>
-
-        <!-- Post-Signing Patreon Conversion Modal -->
-        <div id="registrySuccessModal" class="registry-modal" style="display: none;">
-          <div class="registry-modal-backdrop" id="regModalBackdrop"></div>
-          <div class="registry-modal-card">
-            <button class="modal-close-btn" id="btnCloseRegModal" aria-label="Close Modal">&times;</button>
-            <div class="modal-crest">⚜</div>
-            <span class="modal-badge">Placement Slip Issued</span>
-            <h3 class="modal-title">Signature Recorded in the Annals</h3>
-            <p class="modal-subtitle">
-              Matron Hawthorne has stamped your entry. Your statement is now permanently preserved in the sanctuary rolls.
-            </p>
-
-            <div class="signed-slip-box" id="signedSlipBox">
-              <!-- Dynamically rendered slip -->
-            </div>
-
-            <div class="patreon-bridge-box">
-              <div class="bridge-header">
-                <h4>Take Your Place Among Active Wards</h4>
-                <p>
-                  Over <strong>135+ serialized audio episodes</strong>, daily quiet hours, and active community discussions await inside the official Patreon sanctuary.
-                </p>
-              </div>
-
-              <div class="bridge-actions">
-                <button id="btnSharePatreon" class="btn btn-gold btn-block">
-                  <svg class="patreon-icon" viewBox="0 0 24 24" fill="currentColor" style="width: 16px; height: 16px; margin-right: 6px;">
-                    <path d="M15.386 0c-4.764 0-8.64 3.876-8.64 8.64 0 4.75 3.876 8.613 8.64 8.613 4.75 0 8.614-3.864 8.614-8.613C24 3.876 20.136 0 15.386 0zm-15.386 24h4.867V0H0v24z"/>
-                  </svg>
-                  <span>Post Ward Slip to Patreon Community Wall</span>
-                </button>
-                <a href="#tiers" class="btn btn-outline btn-block" id="btnBrowseTiersFromModal">
-                  <span>Explore Membership Ranks ($5 - $1000/mo) &darr;</span>
-                </a>
-              </div>
-
-              <div class="bridge-copy-status" id="bridgeCopyStatus" style="display: none;">
-                ✓ Placement slip copied to clipboard! Opening Patreon Community...
-              </div>
             </div>
           </div>
         </div>

@@ -776,14 +776,11 @@ function initRegistry() {
   const syncStatusText = document.getElementById("syncStatusText");
   const syncLed = document.getElementById("syncLed");
 
-  // Modal elements
-  const modal = document.getElementById("registrySuccessModal");
-  const modalBackdrop = document.getElementById("regModalBackdrop");
-  const closeModalBtn = document.getElementById("btnCloseRegModal");
-  const signedSlipBox = document.getElementById("signedSlipBox");
-  const btnSharePatreon = document.getElementById("btnSharePatreon");
-  const btnBrowseTiers = document.getElementById("btnBrowseTiersFromModal");
-  const bridgeCopyStatus = document.getElementById("bridgeCopyStatus");
+  // In-page banner elements
+  const banner = document.getElementById("registrySignedBanner");
+  const bannerRollText = document.getElementById("bannerRollText");
+  const btnBannerCopySlip = document.getElementById("btnBannerCopySlip");
+  const bannerCopyFeedback = document.getElementById("bannerCopyFeedback");
 
   if (!form || !streamContainer) return;
 
@@ -1038,64 +1035,17 @@ function initRegistry() {
     messageInput.value = "";
     if (charCounter) charCounter.textContent = "0 / 300";
 
-    // 5. Open Post-Signing Patreon Conversion Modal
-    openSuccessModal(newEntry);
-  });
-
-  // Open Modal with Stamped Placement Slip
-  function openSuccessModal(entry) {
-    if (!modal || !signedSlipBox) return;
-
-    const deptInfo = getDeptInfo(entry.department);
-    const nowFormatted = new Date().toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    });
-
-    signedSlipBox.innerHTML = `
-      <div class="slip-line"><strong>INSTITUTION:</strong> FINEWOOD ACADEMY &amp; FLM SANCTUARY</div>
-      <div class="slip-line"><strong>REGISTRY ROLL ID:</strong> ${entry.wardId}</div>
-      <div class="slip-line"><strong>WARD CALL-SIGN:</strong> ${escapeHtml(entry.name)}</div>
-      <div class="slip-line"><strong>DEPARTMENT:</strong> ${deptInfo.label}</div>
-      <div class="slip-line"><strong>DATE &amp; TIME:</strong> ${nowFormatted}</div>
-      <div class="slip-quote">"${escapeHtml(entry.message)}"</div>
-    `;
-
-    if (bridgeCopyStatus) {
-      bridgeCopyStatus.style.display = "none";
-    }
-
-    modal.style.display = "flex";
-    document.body.style.overflow = "hidden";
-  }
-
-  // Close Modal
-  function closeModal() {
-    if (!modal) return;
-    modal.style.display = "none";
-    document.body.style.overflow = "";
-  }
-
-  if (closeModalBtn) closeModalBtn.addEventListener("click", closeModal);
-  if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modal && modal.style.display === "flex") {
-      closeModal();
+    // 5. In-Page Confirmation (Zero Interruption, Stays On Page)
+    if (banner && bannerRollText) {
+      bannerRollText.textContent = `Assigned Roll ID: ${newEntry.wardId} • Preserved in Bramley Hall`;
+      banner.style.display = "block";
+      if (bannerCopyFeedback) bannerCopyFeedback.style.display = "none";
     }
   });
 
-  if (btnBrowseTiers) {
-    btnBrowseTiers.addEventListener("click", () => {
-      closeModal();
-    });
-  }
-
-  // Patreon Share Action: Copy formatted slip & open Patreon community
-  if (btnSharePatreon) {
-    btnSharePatreon.addEventListener("click", () => {
+  // Optional: Copy Ward Slip button in banner
+  if (btnBannerCopySlip) {
+    btnBannerCopySlip.addEventListener("click", () => {
       if (!lastEntry) return;
 
       const deptInfo = getDeptInfo(lastEntry.department);
@@ -1103,25 +1053,22 @@ function initRegistry() {
 
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(clipboardText).then(() => {
-          showCopySuccess();
+          showBannerCopySuccess();
         }).catch(() => {
           fallbackCopy(clipboardText);
         });
       } else {
         fallbackCopy(clipboardText);
       }
-
-      // Open Patreon Community in new tab
-      setTimeout(() => {
-        window.open(`${CONFIG.PATREON_URL}/community`, "_blank", "noopener,noreferrer");
-      }, 400);
     });
   }
 
-  function showCopySuccess() {
-    if (bridgeCopyStatus) {
-      bridgeCopyStatus.style.display = "block";
-      bridgeCopyStatus.textContent = "✓ Official Ward Slip copied to clipboard! Opening Patreon Community...";
+  function showBannerCopySuccess() {
+    if (bannerCopyFeedback) {
+      bannerCopyFeedback.style.display = "block";
+      setTimeout(() => {
+        bannerCopyFeedback.style.display = "none";
+      }, 3500);
     }
   }
 
@@ -1132,7 +1079,7 @@ function initRegistry() {
     tempTextarea.select();
     try {
       document.execCommand("copy");
-      showCopySuccess();
+      showBannerCopySuccess();
     } catch (e) {
       console.warn("Clipboard copy failed:", e);
     }

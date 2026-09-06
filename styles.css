@@ -1654,178 +1654,97 @@ textarea.form-control {
 .entry-body.southern { border-left-color: rgba(111, 194, 150, 0.5); }
 .entry-body.curfew { border-left-color: rgba(148, 163, 184, 0.5); }
 
-/* Post-Signing Patreon Conversion Modal */
-.registry-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
+/* In-Page Signature Banner (Zero Interruption, Stays On Page) */
+.registry-signed-banner {
+  margin-top: 1.2rem;
+  background: linear-gradient(135deg, rgba(229, 193, 88, 0.12) 0%, rgba(14, 18, 26, 0.95) 100%);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  animation: bannerFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes bannerFadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.banner-top {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
 }
 
-.registry-modal-backdrop {
-  position: absolute;
-  inset: 0;
-  background: rgba(5, 7, 12, 0.88);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.registry-modal-card {
-  position: relative;
-  background: linear-gradient(180deg, #151824 0%, #0d1017 100%);
-  border: 2px solid var(--gold-border);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 35px var(--gold-glow);
-  border-radius: var(--radius-lg);
-  max-width: 580px;
-  width: 100%;
-  padding: 2.4rem;
-  text-align: center;
-  max-height: 90vh;
-  overflow-y: auto;
-  animation: modalScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes modalScaleUp {
-  from { opacity: 0; transform: scale(0.92); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.modal-close-btn {
-  position: absolute;
-  top: 1rem;
-  right: 1.2rem;
-  background: transparent;
-  border: none;
-  font-size: 1.8rem;
-  color: var(--text-muted);
-  cursor: pointer;
-  transition: color var(--transition-fluent);
+.banner-crest {
+  font-size: 1.6rem;
+  color: var(--gold-primary);
+  text-shadow: 0 0 12px var(--gold-glow);
   line-height: 1;
 }
 
-.modal-close-btn:hover { color: var(--gold-primary); }
-
-.modal-crest {
-  font-size: 2.8rem;
-  color: var(--gold-primary);
-  text-shadow: 0 0 20px var(--gold-glow);
-  margin-bottom: 0.3rem;
-}
-
-.modal-badge {
-  font-family: var(--font-sans);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-primary);
-  display: inline-block;
-  margin-bottom: 0.6rem;
-}
-
-.modal-title {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-}
-
-.modal-subtitle {
-  font-family: var(--font-sans);
-  font-size: 0.88rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-}
-
-/* Stamped Slip Box */
-.signed-slip-box {
-  background: rgba(8, 10, 15, 0.95);
-  border: 1px dashed var(--gold-border);
-  border-radius: var(--radius-sm);
-  padding: 1.2rem 1.4rem;
-  text-align: left;
-  margin-bottom: 1.8rem;
-  position: relative;
-}
-
-.signed-slip-box::after {
-  content: "RECORDED";
-  position: absolute;
-  right: 1.5rem;
-  bottom: 1rem;
+.banner-top strong {
   font-family: var(--font-serif-title);
-  font-size: 1.1rem;
-  font-weight: 900;
-  color: rgba(229, 193, 88, 0.2);
-  transform: rotate(-12deg);
-  border: 2px solid rgba(229, 193, 88, 0.2);
-  padding: 0.2rem 0.6rem;
-  border-radius: 4px;
-}
-
-.slip-line {
-  font-family: monospace;
-  font-size: 0.8rem;
-  color: #cfc8ba;
-  margin-bottom: 0.35rem;
-}
-.slip-line strong {
-  color: var(--gold-primary);
-}
-
-.slip-quote {
-  font-family: var(--font-serif-body);
-  font-style: italic;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   color: var(--text-primary);
-  margin-top: 0.5rem;
-  line-height: 1.45;
+  display: block;
 }
 
-/* Patreon Conversion Bridge */
-.patreon-bridge-box {
-  background: linear-gradient(180deg, rgba(229, 193, 88, 0.1) 0%, rgba(229, 193, 88, 0.03) 100%);
-  border: 1px solid var(--gold-border);
-  border-radius: var(--radius-md);
-  padding: 1.6rem 1.4rem;
-  text-align: center;
-}
-
-.bridge-header h4 {
-  font-family: var(--font-serif-title);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--gold-primary);
-  margin-bottom: 0.4rem;
-}
-
-.bridge-header p {
+.banner-top p {
   font-family: var(--font-sans);
-  font-size: 0.84rem;
-  color: #cfc8ba;
-  line-height: 1.5;
-  margin-bottom: 1.2rem;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
 }
 
-.bridge-actions {
+.banner-actions {
   display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
 }
 
-.bridge-copy-status {
-  margin-top: 0.9rem;
+.btn-banner-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-fluent);
+}
+
+.btn-banner-action:hover {
+  background: rgba(229, 193, 88, 0.18);
+  border-color: var(--gold-border);
+  color: var(--gold-primary);
+}
+
+.btn-banner-action.patreon-link {
+  color: var(--gold-primary);
+  border-color: rgba(229, 193, 88, 0.35);
+}
+
+.btn-banner-action.patreon-link:hover {
+  background: var(--gold-primary);
+  color: #0c0e15;
+}
+
+.banner-copy-feedback {
+  margin-top: 0.6rem;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
   font-weight: 600;
   color: #86efac;
-  background: rgba(74, 222, 128, 0.12);
-  border: 1px solid rgba(74, 222, 128, 0.35);
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  animation: fadeIn 0.3s ease;
+  animation: fadeIn 0.2s ease;
 }
 
 /* ==========================================================================
