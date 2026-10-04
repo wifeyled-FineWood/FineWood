@@ -3,1179 +3,1003 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finewood Academy & FLM Sanctuary | Enter the Universe of Relinquished Control</title>
-  <meta name="description" content="Immersive audio-visual stories of female-led marriages and strict academy discipline. Relinquish decision fatigue and enter a structured universe.">
-
-  <!-- Fonts -->
+  <title>Finewood Stories & @wifeyled — Private Video Archive</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0b0e;
+      --bg-surface: #12141c;
+      --bg-card: #181b26;
+      --bg-card-hover: #222636;
+      --border-subtle: #262a3b;
+      --border-focus: #e5a95d;
+      --gold: #d4974d;
+      --gold-light: #f5c77e;
+      --gold-glow: rgba(212, 151, 77, 0.25);
+      --text-main: #f0f2f7;
+      --text-muted: #9aa1b5;
+      --text-dim: #646b80;
+      --accent-patreon: #ff424d;
+      --accent-patreon-hover: #e0323c;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+    }
 
-  <link rel="stylesheet" href="styles.css">
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* --- Navigation Bar --- */
+    header {
+      background-color: rgba(18, 20, 28, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #3b2a1a, #825a2b);
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: var(--gold-light);
+      font-size: 1.25rem;
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .status-badge {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(38, 42, 59, 0.6);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .btn-patreon {
+      background: linear-gradient(135deg, var(--accent-patreon), #d62839);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(255, 66, 77, 0.3);
+    }
+
+    .btn-patreon:hover {
+      background: var(--accent-patreon-hover);
+      box-shadow: 0 4px 20px rgba(255, 66, 77, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    /* --- Main Layout --- */
+    main {
+      flex: 1;
+      max-width: 1480px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 1.75rem;
+    }
+
+    @media (max-width: 1080px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* --- Theater & Video Player Section --- */
+    .theater-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .player-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+    }
+
+    .player-iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Paywall / Locked Overlay */
+    .locked-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(18, 20, 28, 0.88), rgba(10, 11, 14, 0.98));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      z-index: 10;
+    }
+
+    .locked-overlay.active {
+      display: flex;
+    }
+
+    .locked-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(212, 151, 77, 0.12);
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+
+    .locked-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .locked-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 480px;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .unlock-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Video Details Meta */
+    .video-info-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .video-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .tag-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      background: rgba(212, 151, 77, 0.12);
+      border: 1px solid rgba(212, 151, 77, 0.3);
+      color: var(--gold-light);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .pill-srt {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+    }
+
+    .video-description {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    /* VIP Mode Control Bar */
+    .mode-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: #2b3042;
+      transition: .3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #fff;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--gold);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    /* --- Playlist Sidebar --- */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      height: fit-content;
+      max-height: calc(100vh - 120px);
+    }
+
+    .sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .sidebar-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: rgba(212, 151, 77, 0.15);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .playlist-scroll {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      overflow-y: auto;
+      padding-right: 0.25rem;
+      max-height: 520px;
+    }
+
+    .playlist-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+    .playlist-scroll::-webkit-scrollbar-thumb {
+      background: var(--border-subtle);
+      border-radius: 4px;
+    }
+
+    /* Video Card */
+    .story-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      display: flex;
+      gap: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .story-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(212, 151, 77, 0.4);
+      transform: translateX(2px);
+    }
+
+    .story-card.active {
+      border-color: var(--gold);
+      background: rgba(212, 151, 77, 0.08);
+      box-shadow: inset 0 0 0 1px var(--gold);
+    }
+
+    .card-thumb {
+      width: 96px;
+      aspect-ratio: 16 / 9;
+      background: #0d0f17;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-duration {
+      position: absolute;
+      bottom: 3px;
+      right: 3px;
+      font-size: 0.65rem;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1px 4px;
+      border-radius: 3px;
+      color: #fff;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .card-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-meta {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .lock-indicator {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    /* Modal for Adding / Editing Videos */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 1.5rem;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-dialog {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 580px;
+      padding: 1.75rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .modal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input, .form-textarea, .form-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.88rem;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      margin-top: auto;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- 18+ Age Verification Modal Dialog -->
-  <dialog id="ageGateDialog" class="age-dialog">
-    <div class="age-dialog-content">
-      <div class="age-crest">⚜</div>
-      <span class="age-badge">Age Restricted Sanctuary • 18+ Only</span>
-      <h2>Finewood Academy & Sanctuary</h2>
-      <p class="age-intro">
-        You are about to enter a fictional, adult universe dedicated to <strong>Female Led Marriages (FLM)</strong>, 
-        benevolent and strict institutional discipline, and the psychological comfort of complete routine.
-      </p>
-      <div class="age-rules-box">
-        <ul>
-          <li>All content features consenting adult characters (18+) exploring themes of domestic authority, academy discipline, and surrender of autonomy.</li>
-          <li>Audio dramas and illustrations contain mature themes intended exclusively for mature audiences.</li>
-        </ul>
+  <!-- Top Header Navigation -->
+  <header>
+    <div class="brand">
+      <div class="brand-mark">F</div>
+      <div>
+        <div class="brand-title">FINEWOOD STORIES</div>
+        <div class="brand-subtitle">@wifeyled Archive Player</div>
       </div>
-      <p class="age-question">Are you 18 years of age or older and willing to proceed?</p>
-      <div class="age-actions">
-        <button id="btnConfirmAge" class="btn btn-gold">I Am 18+ • Enter Sanctuary</button>
-        <a href="https://www.google.com" class="btn btn-outline">Exit / Under 18</a>
-      </div>
-      <label class="remember-consent">
-        <input type="checkbox" id="chkRememberAge" checked>
-        <span>Remember my age verification on this device</span>
-      </label>
     </div>
-  </dialog>
 
-  <!-- Ambient Vignette Overlay -->
-  <div class="ambient-vignette"></div>
+    <div class="nav-actions">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span id="libraryInfo">Bunny Stream #770121</span>
+      </div>
 
-  <!-- Navigation -->
-  <header class="site-header">
-    <div class="header-container">
-      <a href="#" class="brand-logo">
-        <span class="crest-icon">⚜</span>
-        <span class="brand-text">
-          <span class="brand-title">FINEWOOD ACADEMY</span>
-          <span class="brand-subtitle">&amp; FLM SANCTUARY</span>
-        </span>
-      </a>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle Navigation">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
+      <button class="btn btn-outline" id="manageBtn" title="Manage or Add Bunny Video IDs">
+        ⚙ Add / Manage Videos
       </button>
 
-      <nav class="nav-links" id="navLinks">
-        <a href="#philosophy">The Sanctuary</a>
-        <a href="#audio-preview">Audio Experience</a>
-        <a href="#excerpts">The Chronicles</a>
-        <a href="#characters">Faculty &amp; Residents</a>
-        <a href="#registry">Visitor Registry</a>
-        <a href="#tiers">Enrollment Tiers</a>
-        <a href="#faq">FAQ</a>
-      </nav>
-
-      <div class="header-cta">
-        <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-patreon patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-          <svg class="patreon-icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M15.386 0c-4.764 0-8.64 3.876-8.64 8.64 0 4.75 3.876 8.613 8.64 8.613 4.75 0 8.614-3.864 8.614-8.613C24 3.876 20.136 0 15.386 0zm-15.386 24h4.867V0H0v24z"/>
-          </svg>
-          Join on Patreon
-        </a>
-      </div>
+      <a href="https://www.patreon.com/wifeyled" target="_blank" rel="noopener noreferrer" class="btn btn-patreon">
+        ★ Patreon VIP ($10)
+      </a>
     </div>
   </header>
 
+  <!-- Main Player Layout -->
   <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="hero-bg-decorations">
-        <div class="glow-orb orb-1"></div>
-        <div class="glow-orb orb-2"></div>
-      </div>
+    <!-- Left Column: Video Theater -->
+    <section class="theater-container">
+      <div class="player-wrapper" id="playerContainer">
+        <!-- Bunny Stream Embedded Player Iframe -->
+        <iframe
+          id="bunnyPlayer"
+          class="player-iframe"
+          src=""
+          loading="lazy"
+          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+          allowfullscreen="true">
+        </iframe>
 
-      <div class="container hero-content">
-        <div class="hero-tag">
-          <span class="tag-pill">⚜ 18+ Audio-Visual Serialized Universe</span>
-        </div>
-
-        <h1 class="hero-title">
-          Relinquish the Burden <br>
-          <span class="text-gold italic">of Every Decision.</span>
-        </h1>
-
-        <p class="hero-subtitle">
-          Step into Finewood Academy and the Female Led Marriage Sanctuary. 
-          Where the bells dictate your hours, Ms. Misha logs your standing, discipline is calm and absolute, and you are welcomed into a timeless world 
-          where someone else takes total custody of your choices.
-        </p>
-
-        <div class="hero-actions">
-          <a href="#tiers" class="btn btn-gold btn-lg patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-            <span>Begin Your Enrollment</span>
-            <span class="btn-arrow">→</span>
-          </a>
-          <a href="#audio-preview" class="btn btn-secondary btn-lg">
-            <span class="play-icon">▶</span>
-            <span>Sample an Audio Story</span>
-          </a>
-        </div>
-
-        <div class="hero-metrics">
-          <div class="metric-item">
-            <span class="metric-val">537+</span>
-            <span class="metric-lbl">Script Archives</span>
-          </div>
-          <div class="metric-divider"></div>
-          <div class="metric-item">
-            <span class="metric-val">57</span>
-            <span class="metric-lbl">Canon Personages</span>
-          </div>
-          <div class="metric-divider"></div>
-          <div class="metric-item">
-            <span class="metric-val">9</span>
-            <span class="metric-lbl">Sanctuary Worlds</span>
-          </div>
-          <div class="metric-divider"></div>
-          <div class="metric-item">
-            <span class="metric-val">100%</span>
-            <span class="metric-lbl">Zero Decision Fatigue</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- The Philosophy Section -->
-    <section id="philosophy" class="section philosophy-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-badge">The Sanctuary Protocol</span>
-          <h2 class="section-title">Why Patrons Surrender Here</h2>
-          <p class="section-desc">
-            Modern adult life is an exhausting barrage of choices, responsibilities, and decision fatigue. 
-            Finewood exists to strip that weight entirely from your shoulders.
+        <!-- Locked Member Overlay (Paywall Test) -->
+        <div class="locked-overlay" id="lockedOverlay">
+          <div class="locked-icon">🔒</div>
+          <h2 class="locked-title" id="lockedStoryTitle">Exclusive Story</h2>
+          <p class="locked-desc">
+            This episode is part of the full 709-story master library. Unlock full HD streaming, paired captions, and all Finewood Academy story arcs via Patreon.
           </p>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-card">
-            <div class="card-icon">🏛️</div>
-            <h3>Structured Order &amp; Routine</h3>
-            <p>
-              Your schedule is drafted, your wardrobe is designated, and daily requirements are decided. 
-              The luxury of simply showing up, bowing your head, and complying with the Academy register.
-            </p>
-          </div>
-
-          <div class="feature-card highlighted">
-            <div class="card-tag">Core Psychological Relief</div>
-            <div class="card-icon">🗝️</div>
-            <h3>Total Surrender of Agency</h3>
-            <p>
-              Under firm matriarchal governance, domestic routine, and strict Victorian decorum, guilt and anxiety dissolve. 
-              Responsibility rests firmly in the capable hands of Ms. Misha and the faculty.
-            </p>
-          </div>
-
-          <div class="feature-card">
-            <div class="card-icon">🎧</div>
-            <h3>Rich Audio-Visual Storytelling</h3>
-            <p>
-              AI-crafted narration with measured, commanding voices, ticking grandfather clocks, rattan cane taps on Bramley Hall parquet, 
-              rustling skirts, and evocative high-definition character illustrations.
-            </p>
-          </div>
-        </div>
-
-        <!-- Narrative Pullquote -->
-        <div class="pullquote-banner">
-          <blockquote>
-            “At Finewood, no one asks what you want for dinner, what you wish to wear, or how you think your evening should be spent. 
-            The bell rings, Ms. Misha pens your name in the ledger, and your peace is found in quiet obedience.”
-          </blockquote>
-          <cite>— Excerpt from <em>The Master Intake Ledger of Finewood Academy</em></cite>
-        </div>
-      </div>
-    </section>
-
-    <!-- Interactive Audio Experience Section -->
-    <section id="audio-preview" class="section audio-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-badge">The Sound of Authority</span>
-          <h2 class="section-title">Immersive Story Player</h2>
-          <p class="section-desc">
-            Experience the auditory weight of Finewood Academy. Put on your headphones, adjust your posture, and listen.
-          </p>
-        </div>
-
-        <div class="player-container">
-          <div class="player-visual-panel">
-            <div class="vinyl-disc-container">
-              <div class="vinyl-disc" id="vinylDisc">
-                <div class="vinyl-label">
-                  <span class="vinyl-crest">⚜</span>
-                  <span class="vinyl-text">FINEWOOD</span>
-                </div>
-              </div>
-              <div class="tone-arm" id="toneArm"></div>
-            </div>
-
-            <div class="current-track-info">
-              <span class="now-playing-badge">Currently Selected</span>
-              <h3 id="playerTrackTitle">Demerit Log &amp; Cane Correction</h3>
-              <p id="playerTrackSpeaker">Narrated by: Ms. Misha &amp; Ms. Elaine &bull; Disciplinary Office</p>
-              <div class="audio-mood-tag">Atmosphere: Leather ledger pen scratches, ticking mantel clock, firm cane cadence</div>
-            </div>
-          </div>
-
-          <div class="player-controls-panel">
-            <!-- Audio Spectrum Visualizer Bars -->
-            <div class="audio-spectrum" id="audioSpectrum">
-              <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-              <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-              <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-              <div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="timeline-container">
-              <span id="timeCurrent">0:00</span>
-              <div class="timeline" id="timelineBar">
-                <div class="timeline-fill" id="timelineFill"></div>
-              </div>
-              <span id="timeTotal">3:45</span>
-            </div>
-
-            <!-- Main Controls -->
-            <div class="player-buttons">
-              <button class="ctrl-btn" id="btnPrevTrack" title="Previous Track">⏮</button>
-              <button class="ctrl-btn btn-play-large" id="btnPlayPause" title="Play Story Preview">
-                <span id="playIcon">▶</span>
-              </button>
-              <button class="ctrl-btn" id="btnNextTrack" title="Next Track">⏭</button>
-            </div>
-
-            <div class="player-aux-controls">
-              <div class="ambient-synth-toggle">
-                <label class="switch-container">
-                  <input type="checkbox" id="ambientToggle" checked>
-                  <span class="switch-slider"></span>
-                </label>
-                <span class="aux-label">Synthesize Study Ambience (Clock &amp; Drone)</span>
-              </div>
-              <div class="volume-control">
-                <span>🔊</span>
-                <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.8">
-              </div>
-            </div>
-
-            <!-- Tracklist Selector -->
-            <div class="tracklist-box">
-              <div class="tracklist-header">Preview Archive • Canon Soundscapes</div>
-              <div class="track-item active" data-track="0">
-                <div class="track-number">01</div>
-                <div class="track-details">
-                  <div class="track-title">Demerit Log &amp; Cane Correction</div>
-                  <div class="track-meta">Ms. Misha &amp; Ms. Elaine • 3:45 • Disciplinary Liaison Office</div>
-                </div>
-                <div class="track-play-indicator">Playing</div>
-              </div>
-
-              <div class="track-item" data-track="1">
-                <div class="track-number">02</div>
-                <div class="track-details">
-                  <div class="track-title">Sissymaid Morning Inspection</div>
-                  <div class="track-meta">Eleanor &bull; 4:12 &bull; Sissymaid Wing &amp; Nordlandia</div>
-                </div>
-                <div class="track-play-indicator">Preview</div>
-              </div>
-
-              <div class="track-item" data-track="2">
-                <div class="track-number">03</div>
-                <div class="track-details">
-                  <div class="track-title">Level III Final Assessment</div>
-                  <div class="track-meta">Counselor Celeste &bull; 3:30 &bull; 3-Tier Counseling Wing</div>
-                </div>
-                <div class="track-play-indicator">Preview</div>
-              </div>
-
-              <div class="track-item" data-track="3">
-                <div class="track-number">04</div>
-                <div class="track-details">
-                  <div class="track-title">Peach Blossom Principles &amp; 'Ol Hickory</div>
-                  <div class="track-meta">Aunt Caroline &amp; Ms. Beau &bull; 5:05 &bull; The Southern Manor</div>
-                </div>
-                <div class="track-play-indicator">Preview</div>
-              </div>
-
-              <div class="track-item" data-track="4">
-                <div class="track-number">05</div>
-                <div class="track-details">
-                  <div class="track-title">Bramley Hall Posture &amp; Metronome</div>
-                  <div class="track-meta">Matron Hawthorne &amp; Ms. Wu &bull; 4:20 &bull; Music &amp; Decorum Hall</div>
-                </div>
-                <div class="track-play-indicator">Preview</div>
-              </div>
-            </div>
-
-            <div class="full-episodes-cta">
-              <p>Full 15-45 minute serialized episodes are unlocked instantly on Patreon.</p>
-              <a href="#tiers" class="btn btn-gold btn-sm patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Unlock Complete Audio Archive
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- The Finewood Chronicles: SFW Canon Excerpts -->
-    <section id="excerpts" class="section excerpts-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-badge">From The Canon Archives</span>
-          <h2 class="section-title">The Finewood Chronicles</h2>
-          <p class="section-desc">
-            Authentic, serialized excerpts directly from our 537+ script archives. Experience the calm authority, strict routines, and psychological relief of total surrender.
-          </p>
-        </div>
-
-        <!-- Excerpt Tab Controls -->
-        <div class="excerpt-tab-controls" id="excerptTabControls">
-          <button class="excerpt-tab-btn active" data-tab="misha" onclick="switchExcerptTab('misha')">Ms. Misha's Ledger</button>
-          <button class="excerpt-tab-btn" data-tab="beau" onclick="switchExcerptTab('beau')">Ms. Beau's Southern Principles</button>
-          <button class="excerpt-tab-btn" data-tab="elaine" onclick="switchExcerptTab('elaine')">Ms. Elaine's Discipline Liaison</button>
-          <button class="excerpt-tab-btn" data-tab="hawthorne" onclick="switchExcerptTab('hawthorne')">Matron Hawthorne's Study</button>
-          <button class="excerpt-tab-btn" data-tab="kathy" onclick="switchExcerptTab('kathy')">Ms. Kathy's Curfew Inspection</button>
-        </div>
-
-        <!-- Excerpt Display Card -->
-        <div class="excerpt-folio-card" id="folioCard">
-          <div class="excerpt-folio-header">
-            <div class="folio-archive-tag" id="folioArchiveTag">FIN-INTAKE-042 • The Office of Demerits</div>
-            <div class="folio-file-id" id="folioFileId">Audio Drama Episode 14 • Archive Ref #4129</div>
-          </div>
-
-          <blockquote class="excerpt-quote" id="folioQuote">
-            “We believe in fairness above all else. Every cub adheres to the exact same rules, and discipline is tailored to their needs… but always firm. Chastity is strictly enforced; it lessens distractions. Here, no one asks what you feel like doing, what you wish to wear, or how you think your evening should be spent. The burden of deciding who you ought to be is taken completely out of your hands.”
-          </blockquote>
-
-          <div class="excerpt-footer">
-            <div class="excerpt-authority">
-              <span class="authority-name" id="folioSpeaker">Ms. Misha</span>
-              <span class="authority-title" id="folioSpeakerTitle">Disciplinary Registrar &amp; Intake Dean (4,129 Archive Mentions)</span>
-            </div>
-            <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-gold btn-sm patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-              Unlock Full Uncut Audio &rarr;
+          <div class="unlock-actions">
+            <a href="https://www.patreon.com/wifeyled" target="_blank" rel="noopener noreferrer" class="btn btn-patreon">
+              Unlock All Stories on Patreon ($10/mo)
             </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Character & Faculty Showcase -->
-    <section id="characters" class="section characters-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-badge">The Roster of Authority</span>
-          <h2 class="section-title">Faculty, Matrons &amp; Southern Belles</h2>
-          <p class="section-desc">
-            Explore the distinctive personalities and strict disciplines that govern our audio stories and visual universe.
-          </p>
-        </div>
-
-        <!-- Filter Controls -->
-        <div class="char-filter-tabs">
-          <button class="filter-btn active" data-filter="all">All Authorities</button>
-          <button class="filter-btn" data-filter="academy">Academy Faculty</button>
-          <button class="filter-btn" data-filter="domestic">Domestic &amp; FLM</button>
-          <button class="filter-btn" data-filter="southern">Southern Governance</button>
-        </div>
-
-        <div class="characters-grid" id="characterGrid">
-          <!-- Ophelia -->
-          <div class="char-card highlighted-border" data-category="academy">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame academy-border">
-                <span class="char-initial">O</span>
-                <span class="char-tag-role">Headmistress</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Ophelia</h3>
-                <span class="char-badge academy">Supreme Sovereign</span>
-              </div>
-              <p class="char-desc">
-                The ultimate sovereign of Finewood Academy. Dignified, timeless, and holding supreme authority over all curriculum, faculty, and disciplinary rulings across the institution.
-              </p>
-            </div>
-          </div>
-
-          <!-- Hawthorne -->
-          <div class="char-card" data-category="academy">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame academy-border">
-                <span class="char-initial">H</span>
-                <span class="char-tag-role">Dean of Demerits</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Hawthorne</h3>
-                <span class="char-badge academy">Bramley Hall Directress</span>
-              </div>
-              <p class="char-desc">
-                Methodical and exacting. Directress of Bramley Hall and Dean of Demerits. Hawthorne commands the Academy's musical standards, metronome tempos, and posture drills with uncompromising discipline.
-              </p>
-            </div>
-          </div>
-
-          <!-- Misha & Elaine -->
-          <div class="char-card" data-category="academy">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame academy-border">
-                <span class="char-initial">ME</span>
-                <span class="char-tag-role">Disciplinary Office</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Misha &amp; Elaine</h3>
-                <span class="char-badge academy">Liaison &amp; Demerit Secretary</span>
-              </div>
-              <p class="char-desc">
-                The administrative center of Finewood. Ms. Misha meticulously logs every infraction and assigns curfews in the master ledger, while Ms. Elaine serves as Discipline Liaison and enforcer of swift, formal cane corrections.
-              </p>
-            </div>
-          </div>
-
-          <!-- Eleanor -->
-          <div class="char-card" data-category="domestic">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame domestic-border">
-                <span class="char-initial">E</span>
-                <span class="char-tag-role">Domestic Enforcer</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Eleanor</h3>
-                <span class="char-badge domestic">Sissymaid Conditioning</span>
-              </div>
-              <p class="char-desc">
-                Director of the sissymaid conditioning wing at Finewood, and the feared Roaming Disciplinarian conducting unannounced household audits and applying demerits across the state of Nordlandia.
-              </p>
-            </div>
-          </div>
-
-          <!-- The Counselors (Astra & Celeste) -->
-          <div class="char-card" data-category="academy">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame academy-border">
-                <span class="char-initial">AMC</span>
-                <span class="char-tag-role">Behavioral Wing</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Astra, Melanie &amp; Celeste</h3>
-                <span class="char-badge academy">3-Tier Counseling Wing</span>
-              </div>
-              <p class="char-desc">
-                Finewood's 3-tier behavioral counseling department. Students progress from Astra's initial psychological intake to Melanie's intensive behavioral review, up to Celeste's austere, uncompromising Level III final assessment.
-              </p>
-            </div>
-          </div>
-
-          <!-- Lady D & Lady M -->
-          <div class="char-card" data-category="academy">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame academy-border">
-                <span class="char-initial">LD</span>
-                <span class="char-tag-role">Head Archivist</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Lady D &amp; Lady M</h3>
-                <span class="char-badge academy">Ancestral Finishing Tradition</span>
-              </div>
-              <p class="char-desc">
-                Custodians of ancestral finishing tradition. Lady D oversees Finewood's historical registers, while Lady M commands the Old London Estate, reforming society's most unruly finishing school wards into flawless decorum.
-              </p>
-            </div>
-          </div>
-
-          <!-- Wu & Ms. Leery -->
-          <div class="char-card" data-category="academy">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame academy-border">
-                <span class="char-initial">WL</span>
-                <span class="char-tag-role">Academic Faculty</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Wu &amp; Ms. Leery</h3>
-                <span class="char-badge academy">History, Syntax &amp; Decorum</span>
-              </div>
-              <p class="char-desc">
-                Senior academic faculty. Teaching institutional history, classical English syntax, and strict classroom decorum through rigorous study hours, corner detention, and deportment lines.
-              </p>
-            </div>
-          </div>
-
-          <!-- Aunt Caroline & Beau -->
-          <div class="char-card" data-category="southern">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame southern-border">
-                <span class="char-initial">AC</span>
-                <span class="char-tag-role">Southern Matriarchs</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Aunt Caroline &amp; Beau</h3>
-                <span class="char-badge southern">The Southern Manor</span>
-              </div>
-              <p class="char-desc">
-                Velvet hospitality wrapped around an iron will. Matriarchs of the Southern Manor and commanders of Belle Bootcamp, proving that a well-managed household produces a peaceful gentleman.
-              </p>
-            </div>
-          </div>
-
-          <!-- Kathy & Head Cub -->
-          <div class="char-card" data-category="academy">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame academy-border">
-                <span class="char-initial">KH</span>
-                <span class="char-tag-role">Residential Order</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Kathy &amp; Head Cub</h3>
-                <span class="char-badge academy">Curfew Enforcement &amp; Dorms</span>
-              </div>
-              <p class="char-desc">
-                Residential quarters and curfew authorities. Ms. Kathy enforces evening quiet hours and dormitory inspections, while Head Cub leads morning roll-call and hallway decorum.
-              </p>
-            </div>
-          </div>
-
-          <!-- Volte -->
-          <div class="char-card" data-category="academy">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame academy-border">
-                <span class="char-initial">V</span>
-                <span class="char-tag-role">Gym &amp; Dance</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Volte</h3>
-                <span class="char-badge academy">Physical Culture &amp; Movement</span>
-              </div>
-              <p class="char-desc">
-                Directress of physical culture, posture conditioning, dance, and movement regimens. Enforces rigorous endurance, squat holds, and bodily discipline to strip away mental hesitation and build total physical compliance.
-              </p>
-            </div>
-          </div>
-
-          <!-- Heidi -->
-          <div class="char-card" data-category="domestic">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame domestic-border">
-                <span class="char-initial">H</span>
-                <span class="char-tag-role">Domestic Service</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Heidi</h3>
-                <span class="char-badge domestic">Sissy-Maid &amp; Domestic Ward</span>
-              </div>
-              <p class="char-desc">
-                Finewood's dedicated sissy-maid and recurring domestic ward across the Female Led Marriage cross-over arcs (often taking the domestic service role of Hubby under Wifey). Specializes in meticulous household service, floor polishing, chore routines, and submissive surrender.
-              </p>
-            </div>
-          </div>
-
-          <!-- Nurse Kay & Nurse May -->
-          <div class="char-card" data-category="academy">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame academy-border">
-                <span class="char-initial">NM</span>
-                <span class="char-tag-role">Infirmary Authority</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Nurse Kay &amp; Nurse May</h3>
-                <span class="char-badge academy">Infirmary Remediation &amp; Rest</span>
-              </div>
-              <p class="char-desc">
-                Presiding over the Academy infirmary and medical remediation. Nurse May is a surprisingly formidable disciplinarian, administering firm bed-rest penalties, corner stances, and restorative paddle corrections.
-              </p>
-            </div>
-          </div>
-
-          <!-- The Resident Cubs -->
-          <div class="char-card" data-category="academy">
-            <div class="char-avatar-wrapper">
-              <div class="char-avatar-frame academy-border">
-                <span class="char-initial">RC</span>
-                <span class="char-tag-role">Resident Cubs</span>
-              </div>
-            </div>
-            <div class="char-info">
-              <div class="char-header">
-                <h3>Lacina, Scarlet &amp; Lisa</h3>
-                <span class="char-badge academy">Resident Student Wards</span>
-              </div>
-              <p class="char-desc">
-                The core student wards navigating daily demerit inspections, evening dorm quiet hours, and the profound relief of surrendered will across hundreds of serialized episodes.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- The Matron's Registry & Visitor Confession Ledger (Firebase Live Guestbook + Patreon Bridge) -->
-    <section id="registry" class="section registry-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <div class="section-badge">⚜ OFFICIAL INSTITUTIONAL LOGBOOK ⚜</div>
-          <h2 class="section-title">The Matron's Visitor Registry</h2>
-          <p class="section-desc">
-            Inscribe your mark upon the permanent Academy annals. Confess your craving for structure, declare your prospective department, and join fellow wards worldwide.
-          </p>
-        </div>
-
-        <div class="registry-container">
-          <!-- Left Column: The Signing Desk / Ledger Form -->
-          <div class="registry-form-card">
-            <div class="registry-card-header">
-              <span class="registry-seal-icon">⚜</span>
-              <div>
-                <h3 class="registry-card-title">Ward Declaration &amp; Entry</h3>
-                <p class="registry-card-subtitle">Indexed in the High Annals of Bramley Hall</p>
-              </div>
-            </div>
-
-            <form id="registryForm" class="registry-form">
-              <div class="form-group">
-                <label for="regName">Your Call-Sign or Ward Moniker <span class="form-req">*</span></label>
-                <input type="text" id="regName" class="form-control" placeholder="e.g. Cub Daniel, Ward #412, or An Exhausted Seeker" required maxlength="40">
-              </div>
-
-              <div class="form-group">
-                <label for="regDepartment">Intended Sanctuary Department <span class="form-req">*</span></label>
-                <select id="regDepartment" class="form-control" required>
-                  <option value="academy">Bramley Hall Academic Ward (Amethyst)</option>
-                  <option value="domestic">Domestic Sanctuary &amp; Sissy-Maid (Gold)</option>
-                  <option value="southern">The Southern Manor &amp; Belle Discipline (Emerald)</option>
-                  <option value="curfew">Curfew Enforcement &amp; Dorm Quarters (Slate)</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="regMessage">Confession, Craving, or Greeting <span class="form-req">*</span></label>
-                <textarea id="regMessage" class="form-control" rows="4" placeholder="What brought you to Finewood? Confess your exhaustion from decision-making or what discipline you seek..." required maxlength="300"></textarea>
-                <div class="form-footer-meta">
-                  <span class="char-counter" id="regCharCounter">0 / 300</span>
-                </div>
-              </div>
-
-              <button type="submit" id="btnSubmitRegistry" class="btn btn-gold btn-block">
-                <span>⚜ Affix Seal &amp; Inscribe Signature</span>
-              </button>
-            </form>
-
-            <!-- In-Page Confirmation (Zero Interruption, Stays On Page) -->
-            <div class="registry-signed-banner" id="registrySignedBanner" style="display: none;">
-              <div class="banner-top">
-                <span class="banner-crest">⚜</span>
-                <div>
-                  <strong>Signature Inscribed in the High Annals</strong>
-                  <p id="bannerRollText">Assigned Roll ID: FW-7412 &bull; Preserved in Bramley Hall</p>
-                </div>
-              </div>
-              <div class="banner-actions">
-                <button type="button" class="btn-banner-action" id="btnBannerCopySlip" title="Copy your Ward Slip to clipboard">
-                  <span>📋 Copy Ward Slip</span>
-                </button>
-                <a href="https://www.patreon.com/c/WifeyLed/community" target="_blank" rel="noopener noreferrer" class="btn-banner-action patreon-link" id="btnBannerPatreonLink">
-                  <span>⚜ Patreon Community (Optional) &rarr;</span>
-                </a>
-              </div>
-              <div class="banner-copy-feedback" id="bannerCopyFeedback" style="display: none;">
-                ✓ Official Ward Slip copied to clipboard!
-              </div>
-            </div>
-
-            <div class="registry-sync-status" id="registrySyncStatus">
-              <span class="sync-led live" id="syncLed"></span>
-              <span id="syncStatusText">Finewood Live Registry Active</span>
-            </div>
-          </div>
-
-          <!-- Right Column: Live Registry Stream -->
-          <div class="registry-feed-card">
-            <div class="registry-feed-header">
-              <div class="feed-title-wrapper">
-                <span class="feed-icon">📜</span>
-                <h4>The High Annals Stream</h4>
-              </div>
-              <span class="feed-live-badge" id="feedLiveBadge">Live Entries</span>
-            </div>
-
-            <div class="registry-stream" id="registryStream">
-              <!-- Live entries will populate here -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Patreon Membership Tiers Section -->
-    <section id="tiers" class="section tiers-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-badge">Choose Your Standing</span>
-          <h2 class="section-title">Official Patreon Enrollment Tiers</h2>
-          <p class="section-desc">
-            Support the universe and choose how deeply you wish to be immersed into the Academy and FLM Sanctuary.
-          </p>
-        </div>
-
-        <!-- Tier Switcher Tabs -->
-        <div class="tier-tabs">
-          <button class="tier-tab-btn active" id="tabStudentTiers" onclick="switchTierCategory('student')">Student &amp; Ward Ranks</button>
-          <button class="tier-tab-btn" id="tabFacultyTiers" onclick="switchTierCategory('faculty')">Faculty &amp; Authority Tiers</button>
-        </div>
-
-        <!-- Category 1: Student & Ward Ranks (Cub, Senior Cub, Sissy-Maid, Head Cub) -->
-        <div class="tiers-grid-4" id="studentTiersGrid">
-          <!-- Cub ($5) -->
-          <div class="tier-card">
-            <div class="tier-header">
-              <span class="tier-level">Level I</span>
-              <h3 class="tier-name">Cub</h3>
-              <div class="tier-price">
-                <span class="currency">$</span>
-                <span class="amount">5</span>
-                <span class="period">/ month</span>
-              </div>
-              <p class="tier-summary">Introductory student access. Read written chapters, text releases, and public character art.</p>
-            </div>
-            <ul class="tier-perks">
-              <li><span>✓</span> Full access to all written story chapters</li>
-              <li><span>✓</span> Public high-res image sets &amp; portraits</li>
-              <li><span>✓</span> 3-minute preview snippets of serialized audio</li>
-              <li><span>✓</span> Access to patron community posts &amp; polls</li>
-            </ul>
-            <div class="tier-action">
-              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Enroll as Cub
-              </a>
-            </div>
-          </div>
-
-          <!-- Senior Cub ($10) -->
-          <div class="tier-card">
-            <div class="tier-header">
-              <span class="tier-level">Level II</span>
-              <h3 class="tier-name">Senior Cub</h3>
-              <div class="tier-price">
-                <span class="currency">$</span>
-                <span class="amount">10</span>
-                <span class="period">/ month</span>
-              </div>
-              <p class="tier-summary">Deeper immersion. Uncut serialized audio dramas and complete story galleries.</p>
-            </div>
-            <ul class="tier-perks">
-              <li><span>✓</span> <strong>Everything in Cub</strong></li>
-              <li><span>✓</span> <strong>Uncut full-length Audio Dramas</strong></li>
-              <li><span>✓</span> Private Audio RSS podcast link for Apple/Spotify</li>
-              <li><span>✓</span> Complete uncensored image galleries &amp; scenes</li>
-              <li><span>✓</span> Monthly voting rights on upcoming story arcs</li>
-            </ul>
-            <div class="tier-action">
-              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Enroll as Senior Cub
-              </a>
-            </div>
-          </div>
-
-          <!-- Sissy-Maid ($15) -->
-          <div class="tier-card">
-            <div class="tier-header">
-              <span class="tier-level">Level III</span>
-              <h3 class="tier-name">Sissy-Maid</h3>
-              <div class="tier-price">
-                <span class="currency">$</span>
-                <span class="amount">15</span>
-                <span class="period">/ month</span>
-              </div>
-              <p class="tier-summary">Total domestic surrender. Dedicated maid service lore, conditioning audio, and Nordlandia files.</p>
-            </div>
-            <ul class="tier-perks">
-              <li><span>✓</span> <strong>Everything in Senior Cub</strong></li>
-              <li><span>✓</span> <strong>Exclusive Sissy-Maid &amp; Conditioning Audios</strong></li>
-              <li><span>✓</span> Eleanor's Nordlandia Demerit &amp; Chore Ledgers</li>
-              <li><span>✓</span> Maid uniform variations &amp; disciplinary artwork</li>
-              <li><span>✓</span> Early access to new weekly series 48h in advance</li>
-            </ul>
-            <div class="tier-action">
-              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Enroll as Sissy-Maid
-              </a>
-            </div>
-          </div>
-
-          <!-- Head Cub ($25 - Featured) -->
-          <div class="tier-card featured">
-            <div class="featured-ribbon">Most Popular Enrollment</div>
-            <div class="tier-header">
-              <span class="tier-level">Level IV</span>
-              <h3 class="tier-name">Head Cub</h3>
-              <div class="tier-price">
-                <span class="currency">$</span>
-                <span class="amount">25</span>
-                <span class="period">/ month</span>
-              </div>
-              <p class="tier-summary">Senior student leader standing. Exclusive POV bedtime relief, demerit dossiers, and direct input.</p>
-            </div>
-            <ul class="tier-perks">
-              <li><span>✓</span> <strong>Everything in Sissy-Maid</strong></li>
-              <li><span>✓</span> <strong>Exclusive POV "Executive Relief" Audios</strong> (bedtime routine commands &amp; relaxation)</li>
-              <li><span>✓</span> Downloadable Finewood Demerit Dossiers &amp; Rulebooks</li>
-              <li><span>✓</span> Submit your own scenario prompt for quarterly featured stories</li>
-              <li><span>✓</span> Official Register acknowledgment</li>
-            </ul>
-            <div class="tier-action">
-              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-gold btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Enroll as Head Cub
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Category 2: Faculty & Authority Tiers (Counselor, Instructor, Headmistress) -->
-        <div class="tiers-grid-3" id="facultyTiersGrid" style="display: none;">
-          <!-- Counselor ($40) -->
-          <div class="tier-card">
-            <div class="tier-header">
-              <span class="tier-level">Faculty Rank</span>
-              <h3 class="tier-name">Counselor</h3>
-              <div class="tier-price">
-                <span class="currency">$</span>
-                <span class="amount">40</span>
-                <span class="period">/ month</span>
-              </div>
-              <p class="tier-summary">Step into the counseling department under Astra, Melanie, and Celeste. Deep worldbuilding access.</p>
-            </div>
-            <ul class="tier-perks">
-              <li><span>✓</span> <strong>All Head Cub perks</strong></li>
-              <li><span>✓</span> Exclusive 3-Tier Behavioral Counseling audio sessions</li>
-              <li><span>✓</span> High-resolution prompt bibles &amp; image generation recipes</li>
-              <li><span>✓</span> Behind-the-scenes writing notes &amp; expanded scripts</li>
-              <li><span>✓</span> Priority voting weight on character development</li>
-            </ul>
-            <div class="tier-action">
-              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Enroll as Counselor
-              </a>
-            </div>
-          </div>
-
-          <!-- Instructor ($60) -->
-          <div class="tier-card">
-            <div class="tier-header">
-              <span class="tier-level">Faculty Rank</span>
-              <h3 class="tier-name">Instructor</h3>
-              <div class="tier-price">
-                <span class="currency">$</span>
-                <span class="amount">60</span>
-                <span class="period">/ month</span>
-              </div>
-              <p class="tier-summary">Department authority standing (Hawthorne, Leery, Wu). Directly influence curriculum and stories.</p>
-            </div>
-            <ul class="tier-perks">
-              <li><span>✓</span> <strong>All Counselor perks</strong></li>
-              <li><span>✓</span> Bi-monthly customized audio dedication / character reading</li>
-              <li><span>✓</span> Raw uncompressed audio stems &amp; full ambient soundscapes</li>
-              <li><span>✓</span> Direct line for series brainstorming with the creator</li>
-              <li><span>✓</span> Senior Faculty honor roll listing</li>
-            </ul>
-            <div class="tier-action">
-              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Enroll as Instructor
-              </a>
-            </div>
-          </div>
-
-          <!-- Headmistress ($80 - Limited) -->
-          <div class="tier-card featured">
-            <div class="featured-ribbon">Supreme Prestige</div>
-            <div class="tier-header">
-              <span class="tier-level">High Governance</span>
-              <h3 class="tier-name">Headmistress</h3>
-              <div class="tier-price">
-                <span class="currency">$</span>
-                <span class="amount">80</span>
-                <span class="period">/ month</span>
-              </div>
-              <span class="tier-limited-badge">Limited Standing &bull; 2 of 3 Enrolled</span>
-              <p class="tier-summary">Ultimate executive patronage alongside Ophelia and Andrea. Shape the destiny of Finewood.</p>
-            </div>
-            <ul class="tier-perks">
-              <li><span>✓</span> <strong>Complete Universal All-Access Archive</strong></li>
-              <li><span>✓</span> Personal custom-scripted story episode or character arc inclusion</li>
-              <li><span>✓</span> Executive advisory input on multi-part sagas</li>
-              <li><span>✓</span> Exclusive VIP 1-on-1 patron channel</li>
-              <li><span>✓</span> Permanent founding headmistress immortalization</li>
-            </ul>
-            <div class="tier-action">
-              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-gold btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Claim Headmistress Seat
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- The High Benefactors Plaque (Silver $500 & Gold $1000) -->
-        <div class="benefactor-section">
-          <div class="benefactor-crest">⚜️</div>
-          <h3 class="benefactor-title">The High Benefactors of Finewood</h3>
-          <p class="benefactor-subtitle">
-            Established for the extraordinary patrons whose profound generosity directly sustains the expansion of our audio dramas, visual archives, and serialized universe.
-          </p>
-
-          <div class="charter-grid">
-            <div class="charter-card">
-              <div class="charter-tier-name">Silver Charter</div>
-              <div class="charter-price">$500 <span class="text-xs text-stone-400 font-normal">/ month</span></div>
-              <p class="charter-desc">
-                Esteemed patron charter status. Unlocks permanent dedication in all serialized productions, executive producer billing, and our deepest gratitude for bringing the sanctuary to life.
-              </p>
-              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-outline btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Become Silver Charter Patron
-              </a>
-            </div>
-
-            <div class="charter-card border-amber-400">
-              <div class="charter-tier-name text-amber-300">Gold Charter</div>
-              <div class="charter-price">$1,000 <span class="text-xs text-stone-400 font-normal">/ month</span></div>
-              <p class="charter-desc">
-                Supreme foundational benefactor. Direct co-creation of an entire regional storyline or dedicated character house, custom voice casting, and permanent legendary standing in the Finewood annals.
-              </p>
-              <a href="https://www.patreon.com/c/WifeyLed" class="btn btn-gold btn-block patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-                Become Gold Charter Patron
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="patreon-guarantee mt-8">
-          <span class="lock-icon">🔒</span>
-          <span>Billed securely through Patreon. Cancel or adjust your tier at any moment with zero penalty.</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Testimonials / Escapism Appeal -->
-    <section class="section testimonials-section">
-      <div class="container">
-        <div class="section-header text-center">
-          <span class="section-badge">Voices from the Dorms</span>
-          <h2 class="section-title">What Residents Say</h2>
-        </div>
-
-        <div class="testimonials-grid">
-          <div class="testimonial-card">
-            <div class="testimonial-quote">
-              “After 9 hours of relentless corporate decision-making, putting on headphones and having Ms. Kathy inspect our dorm curfew while Ms. Misha reads the evening demerits is pure psychological relief. The burden of choices completely vanishes.”
-            </div>
-            <div class="testimonial-author">
-              <div class="author-name">Marcus / Resident Ward</div>
-              <div class="author-tier">Senior Cub Patron • 8 Months Enrolled</div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="testimonial-quote">
-              “Eleanor's Nordlandia chore ledgers and the Sissy-Maid conditioning audio gave me the exact domestic accountability I'd been seeking. Having a routine drafted with zero room for hesitation brings absolute peace.”
-            </div>
-            <div class="testimonial-author">
-              <div class="author-name">Domestic Ward Patron</div>
-              <div class="author-tier">Level III Sissy-Maid Standing • 1 Year</div>
-            </div>
-          </div>
-
-          <div class="testimonial-card">
-            <div class="testimonial-quote">
-              “537 serialized archives and 57 consistent characters! When Beatrice Hawthorne’s cane taps against Bramley Hall's parquet, or Aunt Caroline reminds you of southern manners with 'Ol Hickory, you truly feel enrolled in Finewood.”
-            </div>
-            <div class="testimonial-author">
-              <div class="author-name">Head Cub Patron</div>
-              <div class="author-tier">Master Register Member • 1 Year</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="section faq-section">
-      <div class="container faq-container">
-        <div class="section-header text-center">
-          <span class="section-badge">Inquiries &amp; Policies</span>
-          <h2 class="section-title">Frequently Asked Questions</h2>
-        </div>
-
-        <div class="accordion">
-          <div class="accordion-item">
-            <button class="accordion-trigger">
-              <span>What is the core premise of Finewood Academy and the FLM Sanctuary?</span>
-              <span class="accordion-icon">+</span>
+            <button class="btn btn-outline" onclick="toggleVipMode(true)">
+              Preview as VIP Member
             </button>
-            <div class="accordion-content">
-              <p>
-                Finewood is a fictional, adult (18+) serialized universe combining traditional Victorian academy discipline 
-                with modern Female-Led Marriage (FLM) domestic governance across 9 connected worlds (including Finewood, Nordlandia, and the Southern Manor). 
-                It is designed specifically for individuals who experience modern decision fatigue and desire the soothing, structured escapism 
-                of complete feminine authority and zero-choice routine.
-              </p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-trigger">
-              <span>How do the demerit ledgers and disciplinary hierarchy work in the stories?</span>
-              <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-content">
-              <p>
-                Infractions follow a clear, realistic institutional progression established across our 537 scripts: 
-                Minor lapses begin with 15-minute Corner Time (hands on head) or 100-500 deportment lines. 
-                Dormitory and evening misbehavior is corrected via hairbrush inspection under Ms. Kathy. 
-                Serious defiance leads directly to Ms. Elaine's Discipline Liaison office for formal rattan cane correction, 
-                while persistent executive defiance is referred up through the 3-Tier Behavioral Counseling wing under Astra, Melanie, and Celeste.
-              </p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-trigger">
-              <span>How are the stories and audio dramas produced?</span>
-              <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-content">
-              <p>
-                Episodes are created using advanced AI text generation guided by careful human editing, paired with custom AI character art 
-                with strict visual continuity (Misha, Hawthorne, Eleanor, Beau, etc.), and professional-grade AI voice synthesis 
-                layered with custom sound design (leather ledgers, ticking grandfather clocks, rattan canes, and starched uniforms).
-              </p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-trigger">
-              <span>What is the difference between Student and Faculty Patreon tiers?</span>
-              <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-content">
-              <p>
-                Student &amp; Ward ranks (Cub $5, Senior Cub $10, Sissy-Maid $15, Head Cub $25) are designed for patrons seeking pure immersive entertainment, 
-                uncut serialized audio dramas, and soothing bedtime relief. Faculty tiers (Counselor $40, Instructor $60, Headmistress $80) unlock 
-                deep worldbuilding archives, prompt recipes, custom character dedications, and direct advisory input into upcoming sagas.
-              </p>
-            </div>
-          </div>
-
-          <div class="accordion-item">
-            <button class="accordion-trigger">
-              <span>Is my subscription private and discreet?</span>
-              <span class="accordion-icon">+</span>
-            </button>
-            <div class="accordion-content">
-              <p>
-                Yes. Patreon billing is handled through their secure, confidential payment processor. Discretion and privacy are fully respected. 
-                You can cancel or alter your tier whenever you wish directly from your Patreon settings.
-              </p>
-            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Final Call to Action -->
-    <section class="final-cta-section">
-      <div class="container text-center">
-        <span class="crest-icon large">⚜</span>
-        <h2 class="final-cta-title">Your Desk Is Waiting. Your Schedule Is Set.</h2>
-        <p class="final-cta-desc">
-          Stop wondering what to decide next. Join hundreds of residents who have surrendered their daily overwhelm to the Matrons of Finewood.
+      <!-- Video Meta Information Box -->
+      <div class="video-info-box">
+        <div class="info-header">
+          <div>
+            <h1 class="video-title" id="currentTitle">Select a Story</h1>
+            <div class="tag-pills" id="currentTags">
+              <span class="pill">Finewood Archive</span>
+            </div>
+          </div>
+        </div>
+        <p class="video-description" id="currentDesc">
+          Experience timeless domestic discipline, finishing academy traditions, and spoken-word storytelling remasterings.
         </p>
-        <a href="#tiers" class="btn btn-gold btn-lg patreon-cta-btn" target="_blank" rel="noopener noreferrer">
-          Enter Finewood Academy on Patreon
-        </a>
+      </div>
+
+      <!-- VIP Membership Test Mode Bar -->
+      <div class="mode-bar">
+        <div>
+          <strong style="color: var(--gold-light);">Test Sandbox Mode:</strong>
+          <span style="color: var(--text-muted); margin-left: 0.5rem;" id="modeStatusText">Currently viewing as Guest (Free Visitor)</span>
+        </div>
+        <div class="toggle-group">
+          <span>VIP Unlock:</span>
+          <label class="switch">
+            <input type="checkbox" id="vipToggle" onchange="toggleVipMode(this.checked)">
+            <span class="slider"></span>
+          </label>
+        </div>
       </div>
     </section>
+
+    <!-- Right Column: Story Playlist & Series Selector -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Story Library (<span id="videoCount">0</span>)</div>
+      </div>
+
+      <!-- Filter Categories -->
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="filterCategory('all', this)">All Stories</button>
+        <button class="tab-btn" onclick="filterCategory('academy', this)">Finewood Academy</button>
+        <button class="tab-btn" onclick="filterCategory('discipline', this)">Domestic Discipline</button>
+        <button class="tab-btn" onclick="filterCategory('audio', this)">Audio Remasters</button>
+      </div>
+
+      <!-- Playlist Video Items -->
+      <div class="playlist-scroll" id="playlistContainer">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </aside>
   </main>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-content">
-      <div class="footer-brand">
-        <span class="crest-icon">⚜</span>
-        <span class="footer-title">Finewood Academy &amp; FLM Sanctuary</span>
-        <p class="footer-tagline">A fictional 18+ universe of structured authority, audio-visual storytelling, and zero-decision escapism.</p>
-      </div>
+  <!-- Add / Manage Video Modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-dialog">
+      <h2 class="modal-title">Add / Edit Uploaded Video</h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">
+        Paste the Video ID (GUID) from your Bunny Stream Dashboard (Library #770121) to preview it immediately.
+      </p>
 
-      <div class="footer-notice">
-        <p><strong>18+ Notice:</strong> All characters depicted in stories and artwork are consenting adults aged 18 or older. Content is intended exclusively for mature audiences.</p>
-        <p class="copyright">&copy; 2026 Finewood Academy Universe. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Option 3: Interactive In-Universe Intake Terminal (Matron Hawthorne) -->
-  <button id="intakeFab" class="intake-fab" title="Report to the Office of Demerits">
-    <span class="fab-pulse"></span>
-    <span class="fab-icon">⚜️</span>
-    <span class="fab-label">Office of Demerits • Intake</span>
-  </button>
-
-  <div id="intakeChatModal" class="intake-chat-window" style="display: none;">
-    <div class="intake-chat-header">
-      <div class="intake-header-left">
-        <div class="intake-avatar">H</div>
-        <div>
-          <div class="intake-header-title">Matron Hawthorne</div>
-          <div class="intake-header-subtitle"><span class="status-dot"></span> Active Intake &bull; Demerit Desk</div>
+      <form id="addVideoForm" onsubmit="handleSaveVideo(event)">
+        <div class="form-group" style="margin-bottom: 0.75rem;">
+          <label>Bunny Video ID (GUID):</label>
+          <input type="text" id="inputVideoId" class="form-input" placeholder="e.g. b8f3708a-442a-44e2-a0b2-..." required>
         </div>
-      </div>
-      <button id="intakeCloseBtn" class="intake-close-btn" title="Minimize Evaluation">&times;</button>
-    </div>
 
-    <div class="intake-chat-body" id="intakeChatMessages">
-      <!-- Chat bubbles injected by script.js -->
-    </div>
+        <div class="form-group" style="margin-bottom: 0.75rem;">
+          <label>Story Title:</label>
+          <input type="text" id="inputTitle" class="form-input" placeholder="e.g. The Headmistress's Inspection" required>
+        </div>
 
-    <div class="intake-chat-footer" id="intakeChatInputArea">
-      <!-- Options injected by script.js -->
+        <div class="form-group" style="margin-bottom: 0.75rem;">
+          <label>Category:</label>
+          <select id="inputCategory" class="form-select">
+            <option value="academy">Finewood Academy</option>
+            <option value="discipline">Domestic Discipline</option>
+            <option value="audio">Audio Remaster</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0.75rem;">
+          <label>Synopsis / Description:</label>
+          <textarea id="inputDesc" class="form-textarea" rows="2" placeholder="Brief story synopsis..."></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label>Access Tier:</label>
+          <select id="inputAccess" class="form-select">
+            <option value="free">Free Preview (Unlocked for all)</option>
+            <option value="member">Members Only (Requires VIP Unlock)</option>
+          </select>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="btn btn-patreon">Save & Load Video</button>
+        </div>
+      </form>
     </div>
   </div>
 
-  <!-- Google Firebase SDKs (Static GitHub Pages Compat) -->
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics-compat.js"></script>
+  <footer>
+    <p>Finewood Stories & @wifeyled • Private Cloud Video Sandbox • Hosted on Bunny Stream CDN</p>
+  </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // --- DEFAULT CONFIGURATION ---
+    const BUNNY_LIBRARY_ID = "770121";
+
+    // Initial starter video dataset (Replace these IDs or add yours via the "Add / Manage Videos" button)
+    const DEFAULT_VIDEOS = [
+      {
+        id: "demo-sample-1",
+        bunnyId: "sample", // Replace with real GUID
+        title: "Finewood Academy: The Induction Formalities",
+        category: "academy",
+        duration: "14:20",
+        access: "free",
+        hasSrt: true,
+        desc: "New arrivals at Finewood Academy quickly discover that deportment, punctuality, and traditional disciplinary accountability are strictly enforced under Lady Eleanor's watchful gaze.",
+        tags: ["Finewood Academy", "Spoken Word", "Subtitles"]
+      },
+      {
+        id: "demo-sample-2",
+        bunnyId: "sample2",
+        title: "Domestic Sanction: A Lesson in Evening Decorum",
+        category: "discipline",
+        duration: "18:45",
+        access: "member",
+        hasSrt: true,
+        desc: "A classic domestic discipline narrative following household expectations, calm reprimands, and restorative consequences.",
+        tags: ["Domestic Discipline", "Remastered 1080p", "Captions"]
+      },
+      {
+        id: "demo-sample-3",
+        bunnyId: "sample3",
+        title: "The Scholar's Defiance & Evening Correction",
+        category: "academy",
+        duration: "21:10",
+        access: "member",
+        hasSrt: false,
+        desc: "Defying curfew and library regulations at Finewood carries unambiguous sanctions. An intimate audio-visual recount.",
+        tags: ["Finewood Academy", "Audio Remaster"]
+      }
+    ];
+
+    // --- APPLICATION STATE ---
+    let videos = [];
+    let currentVideoIndex = 0;
+    let isVip = false;
+    let currentFilter = "all";
+
+    // Load persisted videos or fall back to defaults
+    function loadSavedVideos() {
+      const saved = localStorage.getItem("finewood_custom_videos");
+      if (saved) {
+        try {
+          videos = JSON.parse(saved);
+        } catch (e) {
+          videos = DEFAULT_VIDEOS;
+        }
+      } else {
+        videos = DEFAULT_VIDEOS;
+      }
+    }
+
+    function saveVideosToStorage() {
+      localStorage.setItem("finewood_custom_videos", JSON.stringify(videos));
+    }
+
+    // --- RENDER PLAYLIST ---
+    function renderPlaylist() {
+      const container = document.getElementById("playlistContainer");
+      container.innerHTML = "";
+
+      const filtered = videos.filter(v => {
+        if (currentFilter === "all") return true;
+        return v.category === currentFilter;
+      });
+
+      document.getElementById("videoCount").innerText = filtered.length;
+
+      filtered.forEach((video, index) => {
+        const originalIndex = videos.indexOf(video);
+        const isCurrent = originalIndex === currentVideoIndex;
+        const isLocked = video.access === "member" && !isVip;
+
+        const card = document.createElement("div");
+        card.className = `story-card ${isCurrent ? "active" : ""}`;
+        card.onclick = () => selectVideo(originalIndex);
+
+        card.innerHTML = `
+          <div class="card-thumb">
+            <span style="font-size: 1.2rem; color: var(--gold-light);">▶</span>
+            <span class="card-duration">${video.duration || "HD"}</span>
+          </div>
+          <div class="card-content">
+            <div class="card-title">${video.title}</div>
+            <div class="card-meta">
+              <span>${video.category.toUpperCase()}</span>
+              ${video.hasSrt ? '• <span style="color:#34d399;">SRT</span>' : ''}
+              ${isLocked ? '<span class="lock-indicator">🔒 VIP</span>' : '• <span style="color:#10b981;">FREE</span>'}
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // --- SELECT & LOAD VIDEO ---
+    function selectVideo(index) {
+      currentVideoIndex = index;
+      const video = videos[index];
+      if (!video) return;
+
+      const player = document.getElementById("bunnyPlayer");
+      const overlay = document.getElementById("lockedOverlay");
+      const titleEl = document.getElementById("currentTitle");
+      const descEl = document.getElementById("currentDesc");
+      const tagsEl = document.getElementById("currentTags");
+
+      // Update text info
+      titleEl.innerText = video.title;
+      descEl.innerText = video.desc || "";
+
+      // Tags & Pills
+      tagsEl.innerHTML = "";
+      (video.tags || [video.category]).forEach(tag => {
+        const span = document.createElement("span");
+        span.className = "pill";
+        span.innerText = tag;
+        tagsEl.appendChild(span);
+      });
+
+      if (video.hasSrt) {
+        const srtSpan = document.createElement("span");
+        srtSpan.className = "pill pill-srt";
+        srtSpan.innerText = "✓ Subtitles Paired";
+        tagsEl.appendChild(srtSpan);
+      }
+
+      // Check if locked
+      const isLocked = video.access === "member" && !isVip;
+
+      if (isLocked) {
+        overlay.classList.add("active");
+        document.getElementById("lockedStoryTitle").innerText = video.title;
+        player.src = ""; // Unload player while locked
+      } else {
+        overlay.classList.remove("active");
+        // Load Bunny Stream Embed URL
+        if (video.bunnyId && video.bunnyId !== "sample" && video.bunnyId !== "sample2" && video.bunnyId !== "sample3") {
+          player.src = `https://iframe.mediadelivery.net/embed/${BUNNY_LIBRARY_ID}/${video.bunnyId}?autoplay=true&loop=false&muted=false&preload=true&responsive=true`;
+        } else {
+          // Fallback placeholder note for sample IDs
+          player.src = `about:blank`;
+        }
+      }
+
+      renderPlaylist();
+    }
+
+    // --- VIP MODE TOGGLE ---
+    function toggleVipMode(checked) {
+      isVip = checked;
+      document.getElementById("vipToggle").checked = checked;
+      const statusText = document.getElementById("modeStatusText");
+
+      if (isVip) {
+        statusText.innerHTML = '<strong style="color:#10b981;">VIP Active</strong> (All 709 Stories Unlocked)';
+      } else {
+        statusText.innerText = "Currently viewing as Guest (Free Visitor)";
+      }
+
+      selectVideo(currentVideoIndex);
+    }
+
+    // --- FILTER CATEGORY ---
+    function filterCategory(cat, btn) {
+      currentFilter = cat;
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderPlaylist();
+    }
+
+    // --- MODAL CONTROLS ---
+    const modal = document.getElementById("modalBackdrop");
+    document.getElementById("manageBtn").onclick = () => modal.classList.add("active");
+    function closeModal() {
+      modal.classList.remove("active");
+    }
+
+    function handleSaveVideo(e) {
+      e.preventDefault();
+      const bunnyId = document.getElementById("inputVideoId").value.trim();
+      const title = document.getElementById("inputTitle").value.trim();
+      const category = document.getElementById("inputCategory").value;
+      const desc = document.getElementById("inputDesc").value.trim();
+      const access = document.getElementById("inputAccess").value;
+
+      const newVideo = {
+        id: "vid-" + Date.now(),
+        bunnyId: bunnyId,
+        title: title,
+        category: category,
+        duration: "HD",
+        access: access,
+        hasSrt: true,
+        desc: desc,
+        tags: [category.toUpperCase(), "Bunny Stream 1080p", "Captions"]
+      };
+
+      videos.unshift(newVideo);
+      saveVideosToStorage();
+      closeModal();
+      document.getElementById("addVideoForm").reset();
+
+      // Immediately switch to the new video
+      selectVideo(0);
+    }
+
+    // --- INITIALIZE ---
+    window.addEventListener("DOMContentLoaded", () => {
+      loadSavedVideos();
+      renderPlaylist();
+      selectVideo(0);
+    });
+  </script>
 </body>
 </html>
