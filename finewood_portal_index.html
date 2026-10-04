@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finewood Stories & @wifeyled — Private Video Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0a0b0e;
+      --bg-surface: #12141c;
+      --bg-card: #181b26;
+      --bg-card-hover: #222636;
+      --border-subtle: #262a3b;
+      --border-focus: #e5a95d;
+      --gold: #d4974d;
+      --gold-light: #f5c77e;
+      --gold-glow: rgba(212, 151, 77, 0.25);
+      --text-main: #f0f2f7;
+      --text-muted: #9aa1b5;
+      --text-dim: #646b80;
+      --accent-patreon: #ff424d;
+      --accent-patreon-hover: #e0323c;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* --- Navigation Bar --- */
+    header {
+      background-color: rgba(18, 20, 28, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: var(--radius-sm);
+      background: linear-gradient(135deg, #3b2a1a, #825a2b);
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      color: var(--gold-light);
+      font-size: 1.25rem;
+      box-shadow: 0 0 12px var(--gold-glow);
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .status-badge {
+      font-size: 0.75rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(38, 42, 59, 0.6);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: #10b981;
+      box-shadow: 0 0 6px #10b981;
+    }
+
+    .btn {
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .btn-patreon {
+      background: linear-gradient(135deg, var(--accent-patreon), #d62839);
+      color: #fff;
+      box-shadow: 0 4px 14px rgba(255, 66, 77, 0.3);
+    }
+
+    .btn-patreon:hover {
+      background: var(--accent-patreon-hover);
+      box-shadow: 0 4px 20px rgba(255, 66, 77, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    /* --- Main Layout --- */
+    main {
+      flex: 1;
+      max-width: 1480px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 1.75rem;
+    }
+
+    @media (max-width: 1080px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* --- Theater & Video Player Section --- */
+    .theater-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .player-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+    }
+
+    .player-iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Paywall / Locked Overlay */
+    .locked-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(18, 20, 28, 0.88), rgba(10, 11, 14, 0.98));
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      z-index: 10;
+    }
+
+    .locked-overlay.active {
+      display: flex;
+    }
+
+    .locked-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: rgba(212, 151, 77, 0.12);
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+      box-shadow: 0 0 20px var(--gold-glow);
+    }
+
+    .locked-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .locked-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 480px;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .unlock-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Video Details Meta */
+    .video-info-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .video-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.35rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .tag-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.25rem;
+    }
+
+    .pill {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.55rem;
+      border-radius: 4px;
+      background: rgba(212, 151, 77, 0.12);
+      border: 1px solid rgba(212, 151, 77, 0.3);
+      color: var(--gold-light);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .pill-srt {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: #34d399;
+    }
+
+    .video-description {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    /* VIP Mode Control Bar */
+    .mode-bar {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+
+    .toggle-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      inset: 0;
+      background-color: #2b3042;
+      transition: .3s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #fff;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--gold);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(20px);
+    }
+
+    /* --- Playlist Sidebar --- */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      height: fit-content;
+      max-height: calc(100vh - 120px);
+    }
+
+    .sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .sidebar-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.05rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 0.4rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.35rem 0.65rem;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+
+    .tab-btn.active, .tab-btn:hover {
+      background: rgba(212, 151, 77, 0.15);
+      border-color: var(--gold);
+      color: var(--gold-light);
+    }
+
+    .playlist-scroll {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      overflow-y: auto;
+      padding-right: 0.25rem;
+      max-height: 520px;
+    }
+
+    .playlist-scroll::-webkit-scrollbar {
+      width: 5px;
+    }
+    .playlist-scroll::-webkit-scrollbar-thumb {
+      background: var(--border-subtle);
+      border-radius: 4px;
+    }
+
+    /* Video Card */
+    .story-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      display: flex;
+      gap: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .story-card:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(212, 151, 77, 0.4);
+      transform: translateX(2px);
+    }
+
+    .story-card.active {
+      border-color: var(--gold);
+      background: rgba(212, 151, 77, 0.08);
+      box-shadow: inset 0 0 0 1px var(--gold);
+    }
+
+    .card-thumb {
+      width: 96px;
+      aspect-ratio: 16 / 9;
+      background: #0d0f17;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .card-duration {
+      position: absolute;
+      bottom: 3px;
+      right: 3px;
+      font-size: 0.65rem;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 1px 4px;
+      border-radius: 3px;
+      color: #fff;
+    }
+
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .card-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-meta {
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .lock-indicator {
+      margin-left: auto;
+      font-size: 0.75rem;
+      color: var(--gold);
+    }
+
+    /* Modal for Adding / Editing Videos */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 200;
+      padding: 1.5rem;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+    }
+
+    .modal-dialog {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 580px;
+      padding: 1.75rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .modal-title {
+      font-family: 'Cinzel', serif;
+      font-size: 1.2rem;
+      color: var(--gold-light);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-group label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .form-input, .form-textarea, .form-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.65rem 0.85rem;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.88rem;
+    }
+
+    .form-input:focus, .form-textarea:focus, .form-select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Navigation -->
+  <header>
+    <div class="brand">
+      <div class="brand-mark">F</div>
+      <div>
+        <div class="brand-title">FINEWOOD STORIES</div>
+        <div class="brand-subtitle">@wifeyled Archive Player</div>
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span id="libraryInfo">Bunny Stream #770121</span>
+      </div>
+
+      <button class="btn btn-outline" id="manageBtn" title="Manage or Add Bunny Video IDs">
+        ⚙ Add / Manage Videos
+      </button>
+
+      <a href="https://www.patreon.com/wifeyled" target="_blank" rel="noopener noreferrer" class="btn btn-patreon">
+        ★ Patreon VIP ($10)
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Player Layout -->
+  <main>
+    <!-- Left Column: Video Theater -->
+    <section class="theater-container">
+      <div class="player-wrapper" id="playerContainer">
+        <!-- Bunny Stream Embedded Player Iframe -->
+        <iframe
+          id="bunnyPlayer"
+          class="player-iframe"
+          src=""
+          loading="lazy"
+          allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+          allowfullscreen="true">
+        </iframe>
+
+        <!-- Locked Member Overlay (Paywall Test) -->
+        <div class="locked-overlay" id="lockedOverlay">
+          <div class="locked-icon">🔒</div>
+          <h2 class="locked-title" id="lockedStoryTitle">Exclusive Story</h2>
+          <p class="locked-desc">
+            This episode is part of the full 709-story master library. Unlock full HD streaming, paired captions, and all Finewood Academy story arcs via Patreon.
+          </p>
+          <div class="unlock-actions">
+            <a href="https://www.patreon.com/wifeyled" target="_blank" rel="noopener noreferrer" class="btn btn-patreon">
+              Unlock All Stories on Patreon ($10/mo)
+            </a>
+            <button class="btn btn-outline" onclick="toggleVipMode(true)">
+              Preview as VIP Member
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Meta Information Box -->
+      <div class="video-info-box">
+        <div class="info-header">
+          <div>
+            <h1 class="video-title" id="currentTitle">Select a Story</h1>
+            <div class="tag-pills" id="currentTags">
+              <span class="pill">Finewood Archive</span>
+            </div>
+          </div>
+        </div>
+        <p class="video-description" id="currentDesc">
+          Experience timeless domestic discipline, finishing academy traditions, and spoken-word storytelling remasterings.
+        </p>
+      </div>
+
+      <!-- VIP Membership Test Mode Bar -->
+      <div class="mode-bar">
+        <div>
+          <strong style="color: var(--gold-light);">Test Sandbox Mode:</strong>
+          <span style="color: var(--text-muted); margin-left: 0.5rem;" id="modeStatusText">Currently viewing as Guest (Free Visitor)</span>
+        </div>
+        <div class="toggle-group">
+          <span>VIP Unlock:</span>
+          <label class="switch">
+            <input type="checkbox" id="vipToggle" onchange="toggleVipMode(this.checked)">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Column: Story Playlist & Series Selector -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-title">Story Library (<span id="videoCount">0</span>)</div>
+      </div>
+
+      <!-- Filter Categories -->
+      <div class="filter-tabs">
+        <button class="tab-btn active" onclick="filterCategory('all', this)">All Stories</button>
+        <button class="tab-btn" onclick="filterCategory('academy', this)">Finewood Academy</button>
+        <button class="tab-btn" onclick="filterCategory('discipline', this)">Domestic Discipline</button>
+        <button class="tab-btn" onclick="filterCategory('audio', this)">Audio Remasters</button>
+      </div>
+
+      <!-- Playlist Video Items -->
+      <div class="playlist-scroll" id="playlistContainer">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+    </aside>
+  </main>
+
+  <!-- Add / Manage Video Modal -->
+  <div class="modal-backdrop" id="modalBackdrop">
+    <div class="modal-dialog">
+      <h2 class="modal-title">Add / Edit Uploaded Video</h2>
+      <p style="font-size: 0.85rem; color: var(--text-muted);">
+        Paste the Video ID (GUID) from your Bunny Stream Dashboard (Library #770121) to preview it immediately.
+      </p>
+
+      <form id="addVideoForm" onsubmit="handleSaveVideo(event)">
+        <div class="form-group" style="margin-bottom: 0.75rem;">
+          <label>Bunny Video ID (GUID):</label>
+          <input type="text" id="inputVideoId" class="form-input" placeholder="e.g. b8f3708a-442a-44e2-a0b2-..." required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0.75rem;">
+          <label>Story Title:</label>
+          <input type="text" id="inputTitle" class="form-input" placeholder="e.g. The Headmistress's Inspection" required>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0.75rem;">
+          <label>Category:</label>
+          <select id="inputCategory" class="form-select">
+            <option value="academy">Finewood Academy</option>
+            <option value="discipline">Domestic Discipline</option>
+            <option value="audio">Audio Remaster</option>
+          </select>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 0.75rem;">
+          <label>Synopsis / Description:</label>
+          <textarea id="inputDesc" class="form-textarea" rows="2" placeholder="Brief story synopsis..."></textarea>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 1rem;">
+          <label>Access Tier:</label>
+          <select id="inputAccess" class="form-select">
+            <option value="free">Free Preview (Unlocked for all)</option>
+            <option value="member">Members Only (Requires VIP Unlock)</option>
+          </select>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+          <button type="button" class="btn btn-outline" onclick="closeModal()">Cancel</button>
+          <button type="submit" class="btn btn-patreon">Save & Load Video</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <p>Finewood Stories & @wifeyled • Private Cloud Video Sandbox • Hosted on Bunny Stream CDN</p>
+  </footer>
+
+  <script>
+    // --- DEFAULT CONFIGURATION ---
+    const BUNNY_LIBRARY_ID = "770121";
+
+    // Initial starter video dataset (Replace these IDs or add yours via the "Add / Manage Videos" button)
+    const DEFAULT_VIDEOS = [
+      {
+        id: "demo-sample-1",
+        bunnyId: "sample", // Replace with real GUID
+        title: "Finewood Academy: The Induction Formalities",
+        category: "academy",
+        duration: "14:20",
+        access: "free",
+        hasSrt: true,
+        desc: "New arrivals at Finewood Academy quickly discover that deportment, punctuality, and traditional disciplinary accountability are strictly enforced under Lady Eleanor's watchful gaze.",
+        tags: ["Finewood Academy", "Spoken Word", "Subtitles"]
+      },
+      {
+        id: "demo-sample-2",
+        bunnyId: "sample2",
+        title: "Domestic Sanction: A Lesson in Evening Decorum",
+        category: "discipline",
+        duration: "18:45",
+        access: "member",
+        hasSrt: true,
+        desc: "A classic domestic discipline narrative following household expectations, calm reprimands, and restorative consequences.",
+        tags: ["Domestic Discipline", "Remastered 1080p", "Captions"]
+      },
+      {
+        id: "demo-sample-3",
+        bunnyId: "sample3",
+        title: "The Scholar's Defiance & Evening Correction",
+        category: "academy",
+        duration: "21:10",
+        access: "member",
+        hasSrt: false,
+        desc: "Defying curfew and library regulations at Finewood carries unambiguous sanctions. An intimate audio-visual recount.",
+        tags: ["Finewood Academy", "Audio Remaster"]
+      }
+    ];
+
+    // --- APPLICATION STATE ---
+    let videos = [];
+    let currentVideoIndex = 0;
+    let isVip = false;
+    let currentFilter = "all";
+
+    // Load persisted videos or fall back to defaults
+    function loadSavedVideos() {
+      const saved = localStorage.getItem("finewood_custom_videos");
+      if (saved) {
+        try {
+          videos = JSON.parse(saved);
+        } catch (e) {
+          videos = DEFAULT_VIDEOS;
+        }
+      } else {
+        videos = DEFAULT_VIDEOS;
+      }
+    }
+
+    function saveVideosToStorage() {
+      localStorage.setItem("finewood_custom_videos", JSON.stringify(videos));
+    }
+
+    // --- RENDER PLAYLIST ---
+    function renderPlaylist() {
+      const container = document.getElementById("playlistContainer");
+      container.innerHTML = "";
+
+      const filtered = videos.filter(v => {
+        if (currentFilter === "all") return true;
+        return v.category === currentFilter;
+      });
+
+      document.getElementById("videoCount").innerText = filtered.length;
+
+      filtered.forEach((video, index) => {
+        const originalIndex = videos.indexOf(video);
+        const isCurrent = originalIndex === currentVideoIndex;
+        const isLocked = video.access === "member" && !isVip;
+
+        const card = document.createElement("div");
+        card.className = `story-card ${isCurrent ? "active" : ""}`;
+        card.onclick = () => selectVideo(originalIndex);
+
+        card.innerHTML = `
+          <div class="card-thumb">
+            <span style="font-size: 1.2rem; color: var(--gold-light);">▶</span>
+            <span class="card-duration">${video.duration || "HD"}</span>
+          </div>
+          <div class="card-content">
+            <div class="card-title">${video.title}</div>
+            <div class="card-meta">
+              <span>${video.category.toUpperCase()}</span>
+              ${video.hasSrt ? '• <span style="color:#34d399;">SRT</span>' : ''}
+              ${isLocked ? '<span class="lock-indicator">🔒 VIP</span>' : '• <span style="color:#10b981;">FREE</span>'}
+            </div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      });
+    }
+
+    // --- SELECT & LOAD VIDEO ---
+    function selectVideo(index) {
+      currentVideoIndex = index;
+      const video = videos[index];
+      if (!video) return;
+
+      const player = document.getElementById("bunnyPlayer");
+      const overlay = document.getElementById("lockedOverlay");
+      const titleEl = document.getElementById("currentTitle");
+      const descEl = document.getElementById("currentDesc");
+      const tagsEl = document.getElementById("currentTags");
+
+      // Update text info
+      titleEl.innerText = video.title;
+      descEl.innerText = video.desc || "";
+
+      // Tags & Pills
+      tagsEl.innerHTML = "";
+      (video.tags || [video.category]).forEach(tag => {
+        const span = document.createElement("span");
+        span.className = "pill";
+        span.innerText = tag;
+        tagsEl.appendChild(span);
+      });
+
+      if (video.hasSrt) {
+        const srtSpan = document.createElement("span");
+        srtSpan.className = "pill pill-srt";
+        srtSpan.innerText = "✓ Subtitles Paired";
+        tagsEl.appendChild(srtSpan);
+      }
+
+      // Check if locked
+      const isLocked = video.access === "member" && !isVip;
+
+      if (isLocked) {
+        overlay.classList.add("active");
+        document.getElementById("lockedStoryTitle").innerText = video.title;
+        player.src = ""; // Unload player while locked
+      } else {
+        overlay.classList.remove("active");
+        // Load Bunny Stream Embed URL
+        if (video.bunnyId && video.bunnyId !== "sample" && video.bunnyId !== "sample2" && video.bunnyId !== "sample3") {
+          player.src = `https://iframe.mediadelivery.net/embed/${BUNNY_LIBRARY_ID}/${video.bunnyId}?autoplay=true&loop=false&muted=false&preload=true&responsive=true`;
+        } else {
+          // Fallback placeholder note for sample IDs
+          player.src = `about:blank`;
+        }
+      }
+
+      renderPlaylist();
+    }
+
+    // --- VIP MODE TOGGLE ---
+    function toggleVipMode(checked) {
+      isVip = checked;
+      document.getElementById("vipToggle").checked = checked;
+      const statusText = document.getElementById("modeStatusText");
+
+      if (isVip) {
+        statusText.innerHTML = '<strong style="color:#10b981;">VIP Active</strong> (All 709 Stories Unlocked)';
+      } else {
+        statusText.innerText = "Currently viewing as Guest (Free Visitor)";
+      }
+
+      selectVideo(currentVideoIndex);
+    }
+
+    // --- FILTER CATEGORY ---
+    function filterCategory(cat, btn) {
+      currentFilter = cat;
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      renderPlaylist();
+    }
+
+    // --- MODAL CONTROLS ---
+    const modal = document.getElementById("modalBackdrop");
+    document.getElementById("manageBtn").onclick = () => modal.classList.add("active");
+    function closeModal() {
+      modal.classList.remove("active");
+    }
+
+    function handleSaveVideo(e) {
+      e.preventDefault();
+      const bunnyId = document.getElementById("inputVideoId").value.trim();
+      const title = document.getElementById("inputTitle").value.trim();
+      const category = document.getElementById("inputCategory").value;
+      const desc = document.getElementById("inputDesc").value.trim();
+      const access = document.getElementById("inputAccess").value;
+
+      const newVideo = {
+        id: "vid-" + Date.now(),
+        bunnyId: bunnyId,
+        title: title,
+        category: category,
+        duration: "HD",
+        access: access,
+        hasSrt: true,
+        desc: desc,
+        tags: [category.toUpperCase(), "Bunny Stream 1080p", "Captions"]
+      };
+
+      videos.unshift(newVideo);
+      saveVideosToStorage();
+      closeModal();
+      document.getElementById("addVideoForm").reset();
+
+      // Immediately switch to the new video
+      selectVideo(0);
+    }
+
+    // --- INITIALIZE ---
+    window.addEventListener("DOMContentLoaded", () => {
+      loadSavedVideos();
+      renderPlaylist();
+      selectVideo(0);
+    });
+  </script>
+</body>
+</html>
